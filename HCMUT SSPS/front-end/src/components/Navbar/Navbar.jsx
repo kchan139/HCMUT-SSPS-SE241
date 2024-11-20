@@ -1,37 +1,73 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Logo } from "../Logo/Logo";
-import { Button } from "primitives"; // Replace with your actual Button import
+import { Button } from "primitives"; // Replace with your Button import
 import "./Navbar.css";
 
-export const Navbar = () => {
+export const Navbar = ({ property }) => {
     return (
         <div className="navbar">
             {/* Navbar Content */}
             <div className="navbar-content">
-                {/* Group 2 */}
-                <div className="group-2">
-                    {/* Links Section */}
-                    <div className="links">
-                        {/* Logo */}
-                        <Logo />
+                {/* Links Section */}
+                <div className="links">
+                    {/* Logo */}
+                    <Logo />
 
-                        {/* Buttons */}
-                        <Button className="navbar-button" variant="subtle" onPress={() => alert("Trang chủ clicked!")}>
-                            Trang chủ
-                        </Button>
-                        <Button className="navbar-button" variant="subtle" onPress={() => alert("Lịch sử clicked!")}>
-                            Lịch sử
-                        </Button>
-                    </div>
+                    {/* Buttons based on property */}
+                    {property === "Admin" && (
+                        <>
+                            <Button className="navbar-button" onPress={() => alert("Trang chủ clicked!")}>
+                                Trang chủ
+                            </Button>
+                            <Button className="navbar-button" onPress={() => alert("Lịch sử clicked!")}>
+                                Lịch sử
+                            </Button>
+                            <Button className="navbar-button" onPress={() => alert("Thống kê clicked!")}>
+                                Thống kê
+                            </Button>
+                            <Button className="navbar-button" onPress={() => alert("Quản lý clicked!")}>
+                                Quản lý
+                            </Button>
+                        </>
+                    )}
+                    {property === "Registered User" && (
+                        <>
+                            <Button className="navbar-button" onPress={() => alert("Trang chủ clicked!")}>
+                                Trang chủ
+                            </Button>
+                            <Button className="navbar-button" onPress={() => alert("Lịch sử clicked!")}>
+                                Lịch sử
+                            </Button>
+                        </>
+                    )}
+                    {property === "Guest" && (
+                        <>
+                            <Button className="navbar-button" onPress={() => alert("Trang chủ clicked!")}>
+                                Trang chủ
+                            </Button>
+                        </>
+                    )}
                 </div>
 
-                {/* Additional Links Section */}
+                {/* Additional Links */}
                 <div className="links">
-                    <Button className="navbar-button" variant="subtle" onPress={() => alert("Đăng xuất clicked!")}>
-                        Đăng xuất
-                    </Button>
+                    {property === "Guest" ? (
+                        <Button className="navbar-button" onPress={() => alert("Đăng nhập clicked!")}>
+                            Đăng nhập
+                        </Button>
+                    ) : (
+                        <Button className="navbar-button" onPress={() => alert("Đăng xuất clicked!")}>
+                            Đăng xuất
+                        </Button>
+                    )}
                 </div>
             </div>
         </div>
     );
+};
+
+// PropTypes validation
+Navbar.propTypes = {
+    property: PropTypes.oneOf(["Admin", "Registered User", "Guest"]).isRequired,
 };
