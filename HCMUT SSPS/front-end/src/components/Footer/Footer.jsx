@@ -19,7 +19,7 @@ export const Footer = ({ className }) => {
                         <p className="footer-text">
                             Quyền riêng tư — Điều khoản sử dụng
                         </p>
-                        <div className="group-2">
+                        <div className="frame-icon">
                             <a href="https://github.com" className="github-link">
                                 <img
                                     src={GithubIcon}
@@ -39,7 +39,7 @@ export const Footer = ({ className }) => {
                         <div className="header-links">
                             <h4 className="sub-title">Thông tin</h4>
                         </div>
-                        <div className="body-links">
+                        <div className="body-links-left">
                             <p className="link">Trường Đại học Bách khoa - ĐHQG TP.HCM</p>
                             <p className="link">Công nghệ phần mềm - CO3001 - HK241</p>
                             <p className="link">GVHD: Trương Thị Thái Minh</p>
@@ -51,9 +51,9 @@ export const Footer = ({ className }) => {
                         <div className="header-links">
                             <h4 className="sub-title">Liên hệ</h4>
                         </div>
-                        <div className="body-links">
-                            <p className="link">268 Lý Thường Kiệt, Q.10, TP.HCM</p>
-                            <div className="group-2">
+                        <div className="body-links-right">
+                            <p className="link">268 Lý Thường Kiệt, phường 14, quận 10, TP.HCM</p>
+                            <div className="frame-icon">
                                 <img
                                     src={PhoneIcon}
                                     alt="Phone"
@@ -61,7 +61,7 @@ export const Footer = ({ className }) => {
                                 />
                                 <p className="footer-text">*insert fake phone number*</p>
                             </div>
-                            <div className="group-3">
+                            <div className="frame-icon">
                                 <img
                                     src={MailIcon}
                                     alt="Mail"

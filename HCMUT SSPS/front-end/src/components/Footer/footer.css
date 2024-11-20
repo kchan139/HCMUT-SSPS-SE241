@@ -1,6 +1,6 @@
 .footer {
-    display: flex;
-    width: 1440px;
+    /* display: flex;
+    width: 100%;
     height: 200px;
     padding: 0px 50px 0px 20px;
     flex-direction: column;
@@ -8,7 +8,12 @@
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    background: #FFF;
+    background: #FFF; */
+
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    background-color: #fff; /* Optional background color */
 }
 
 .content {
@@ -21,7 +26,7 @@
 
 .pane-left{
     display: flex;
-    width: 500px;
+    width: 100%;
     padding: 0px 30px;
     flex-direction: column;
     align-items: flex-start;
@@ -31,7 +36,9 @@
 
 .pane-right {
     display: flex;
-    padding-left: 40px;
+    width: 100%;
+    /* padding-left: 40px; */
+    padding: 0px 30px;
     justify-content: flex-end;
     align-items: flex-end;
     flex: 1 0 0;
@@ -66,8 +73,17 @@
     align-self: stretch;
 }
 
-.body-links {
+.body-links-left {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.body-links-right {
+    display: flex;
+    max-height: 140px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -84,8 +100,14 @@
 .footer-text,
 .link,
 .contact-text {
+    color: #000;
+
+    /* Body 3 */
+    font-family: Inter;
     font-size: 14px;
-    color: #555;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
 }
 
 .sub-title {
@@ -101,9 +123,7 @@
     margin-right: 8px;
 }
 
-.group-2,
-.group-3 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.frame-icon {
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Vertically align items */
 }

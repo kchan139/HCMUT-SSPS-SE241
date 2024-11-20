@@ -1,14 +1,11 @@
-import { Navbar } from "./components/Navbar/Navbar"
-import { Footer } from "./components/Footer/Footer"
+// import { Footer } from "./components/Footer/Footer";
+// import { Navbar } from "./components/Navbar/Navbar";
+import Home from "./pages/Home/Home";
 
 function App() {
     return (
         <div>
-            <Navbar property="Admin" />
-            <div className="content">
-                {/* Page content goes here */}
-            </div>
-            <Footer />
+            <Home/>
         </div>
     );
 }
