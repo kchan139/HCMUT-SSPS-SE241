@@ -22,14 +22,14 @@ function Configurations() {
                         <div className="border">
                             <div className="header">In tài liệu</div><br />
                             <div className="line">In hai mặt
-                                <select className="box">
+                                <select className="box" style={{marginLeft: "100px"}}>
                                     <option value="Yes">Có</option>
                                     <option value="No">Không</option>
                                 </select>
                             </div><br />
-                            <div className="line">Số bản sao<input className="box" type="number"/></div><br />
+                            <div className="line">Số bản sao<input className="box" type="number" min="1" defaultValue={1} style={{marginLeft: "90px", width: "100px"}}/></div><br />
                             <div className="line">Loại giấy
-                                <select className="box">
+                                <select className="box" style={{marginLeft: "105px"}}>
                                     <option value="Letter">Letter</option>
                                     <option value="Tabloid">Tabloid</option>
                                     <option value="A3">A3</option>
@@ -38,20 +38,23 @@ function Configurations() {
                                 </select>
                             </div><br />
                             <div className="line">Hướng in
-                                <select className="box">
+                                <select className="box" style={{marginLeft: "105px"}}>
                                     <option value="Vertical" selected>Dọc</option>
                                     <option value="Horizontal">Ngang</option>
                                 </select>
                             </div><br />
-                            <div className="line">Tỉ lệ in<input className="box" type=""/></div><br />
+                            <div className="line">Tỉ lệ in
+                                <input className="box" type="number" min="1" max="1000" defaultValue={100} style={{marginLeft: "120px"}}/>
+                                <span class="input-group-text">%</span>    
+                            </div><br />
 
-                            <div className="line" size="40"><b>Thông tin sinh viên</b></div>
+                            <div className="line" style={{fontSize: "20px"}}><b>Thông tin sinh viên</b></div>
                             <div className="line">Họ và tên: </div>
                             <div className="line">Mã số sinh viên: </div>
                             <div className="line">Email: </div>
                             <div className="line">Khoa: </div>
 
-                            <ButtonGroup>
+                            <ButtonGroup style={{marginLeft: "90px", marginTop: "90px"}}>
                                 <Button onPress={() => {}} variant="subtle">Quay lại</Button>
                                 <Button onPress={() => {}} variant="primary">Tiếp tục</Button>
                             </ButtonGroup>

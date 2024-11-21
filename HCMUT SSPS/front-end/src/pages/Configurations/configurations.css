@@ -95,8 +95,7 @@
 }
 
 .box {
-    margin-left: 50px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 2px solid #4e4a4a;
     appearance: auto;
 }
