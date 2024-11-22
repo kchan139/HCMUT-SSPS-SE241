@@ -20,14 +20,14 @@ function Configurations() {
                 />{
                     <div className="content">
                         <div className="border">
-                            <div className="header">In tài liệu</div><br />
+                            <div className="header">In tài liệu</div>
                             <div className="line">In hai mặt
-                                <select className="box" style={{marginLeft: "100px"}}>
+                                <select className="box" style={{marginLeft: "99px"}}>
                                     <option value="Yes">Có</option>
                                     <option value="No">Không</option>
                                 </select>
                             </div><br />
-                            <div className="line">Số bản sao<input className="box" type="number" min="1" defaultValue={1} style={{marginLeft: "90px", width: "100px"}}/></div><br />
+                            <div className="line">Số bản sao<input className="box" type="number" min="1" defaultValue={1} style={{marginLeft: "85px", width: "100px"}}/></div><br />
                             <div className="line">Loại giấy
                                 <select className="box" style={{marginLeft: "105px"}}>
                                     <option value="Letter">Letter</option>
@@ -44,11 +44,11 @@ function Configurations() {
                                 </select>
                             </div><br />
                             <div className="line">Tỉ lệ in
-                                <input className="box" type="number" min="1" max="1000" defaultValue={100} style={{marginLeft: "120px"}}/>
+                                <input className="box" type="number" min="1" max="1000" defaultValue={100} style={{marginLeft: "127px"}}/>
                                 <span class="input-group-text">%</span>    
                             </div><br />
 
-                            <div className="line" style={{fontSize: "20px", marginTop: "50px", marginBottom: "10px"}}><b>Thông tin sinh viên</b></div>
+                            <div className="line" style={{fontSize: "20px", marginTop: "10px", marginBottom: "10px"}}><b>Thông tin sinh viên</b></div>
                             <div className="line">Họ và tên: </div>
                             <div className="line">Mã số sinh viên: </div>
                             <div className="line">Email: </div>

@@ -4,12 +4,13 @@ import Home from "./pages/Home/Home";
 
 import ChoosePrinter from "./pages/ChoosePrinter/ChoosePrinter";
 import Configurations from "./pages/Configurations/Configurations";
+import PrintingComplete from "./pages/PrintingComplete/PrintingComplete";
 import UserLog from "./pages/UserLog/UserLog";
 
 function App() {
     return (
         <div>
-            <Configurations/>
+            <PrintingComplete/>
         </div>
     );
 }

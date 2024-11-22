@@ -29,12 +29,6 @@
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.title {
-    font-size: 36px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
 .upload-section {
     margin-top: 20px;
 }

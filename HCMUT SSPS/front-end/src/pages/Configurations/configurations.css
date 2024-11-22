@@ -29,12 +29,6 @@
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.title {
-    font-size: 36px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
 .upload-section {
     margin-top: 20px;
 }
@@ -85,7 +79,8 @@
 
 .line {
     margin-left: 100px;
-    line-height: 100px;
+    margin-top: 10px;
+    line-height: 90px;
     color: #000;
     font-family: Inter;
     font-size: 20px;
