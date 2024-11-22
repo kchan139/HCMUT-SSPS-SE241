@@ -87,3 +87,7 @@ font-size: 1.2rem; /* Optional size */
 .custom-table tbody {
     background: white;
 }
+
+.button-variant-subtle {
+    --button-background-color: none;
+}

@@ -126,4 +126,5 @@
 .frame-icon {
     display: flex; /* Enable flexbox */
     align-items: center; /* Vertically align items */
+    gap: var(--Space-200, 8px);
 }
