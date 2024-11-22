@@ -78,7 +78,7 @@
   }
 }
 .button-variant-subtle {
-  --button-background-color: transparent;
+  --button-background-color: white;
   --button-border-color: transparent;
   --button-color: var(--sds-color-text-brand-default);
   &[data-hovered]:not([data-disabled]) {
