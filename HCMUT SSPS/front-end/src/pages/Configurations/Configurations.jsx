@@ -48,13 +48,13 @@ function Configurations() {
                                 <span class="input-group-text">%</span>    
                             </div><br />
 
-                            <div className="line" style={{fontSize: "20px"}}><b>Thông tin sinh viên</b></div>
+                            <div className="line" style={{fontSize: "20px", marginTop: "50px", marginBottom: "10px"}}><b>Thông tin sinh viên</b></div>
                             <div className="line">Họ và tên: </div>
                             <div className="line">Mã số sinh viên: </div>
                             <div className="line">Email: </div>
                             <div className="line">Khoa: </div>
 
-                            <ButtonGroup style={{marginLeft: "90px", marginTop: "90px"}}>
+                            <ButtonGroup style={{marginLeft: "90px", marginTop: "30px"}}>
                                 <Button onPress={() => {}} variant="subtle">Quay lại</Button>
                                 <Button onPress={() => {}} variant="primary">Tiếp tục</Button>
                             </ButtonGroup>
