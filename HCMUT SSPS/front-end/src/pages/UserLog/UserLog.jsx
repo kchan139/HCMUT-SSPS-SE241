@@ -13,9 +13,10 @@ function UserLog(){
                     src={BackgroundSVG}
                     alt="Background"
                     className="background-image"
-                />
-                </div>
-                
+                />{
+                    
+                }
+            </div>
             <Footer />
         </div>
 
