@@ -10,7 +10,7 @@ import UserLog from "./pages/UserLog/UserLog";
 function App() {
     return (
         <div>
-            <PrintingComplete/>
+            <UserLog/>
         </div>
     );
 }

@@ -25,7 +25,8 @@ function PrintingComplete(){
                             <div className="line2">Mã số sinh viên: </div>
                             <div className="line2">Email: </div>
                             <div className="line2">Khoa: </div>
-
+                            
+                            <div style={{width:"100px", height:"100px"}}></div>
                             <ButtonGroup style={{marginTop: "20px"}}>
                             <Button onPress={() => {}} variant="primary">Trở về trang chủ</Button>
                             </ButtonGroup>

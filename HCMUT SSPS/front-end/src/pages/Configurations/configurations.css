@@ -29,34 +29,6 @@
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.upload-section {
-    margin-top: 20px;
-}
-
-.upload-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    color: #000;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.file-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-}
-
-.drag-and-drop-text {
-    margin-top: 12px;
-    color: #ccc;
-    font-size: 14px;
-}
-
 .border {
     width: 1000px;
     height: 622px;
@@ -93,4 +65,12 @@
     border-radius: 5px;
     border: 2px solid #4e4a4a;
     appearance: auto;
+}
+
+.button-variant-subtle {
+    --button-background-color: rgba(72, 88, 137, 0.509);
+}
+
+.button-variant-primary {
+    --button-background-color: rgb(0, 64, 255);
 }
