@@ -22,7 +22,7 @@ function Home() {
                         <div className="button-div">
                             <Button
                                 onPress={() => {}}
-                                variant="neutral"
+                                variant="primary"
                             >
                                 <IconFilePlus />
                                 Chọn tệp từ thiết bị
