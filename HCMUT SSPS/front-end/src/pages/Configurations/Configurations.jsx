@@ -8,6 +8,16 @@ import { ButtonGroup, Navigation } from "primitives";
 import { Button } from "primitives";
 import { InputField } from "primitives";
 
+const record = {
+    Name: "Nguyen Van Teo",
+    ID: "2252623",
+    Email: "TeoVanNg@gmail.com",
+    Faculty: "Computer Science",
+    Code: "MF125241242",
+    Area: "A4 - 402",
+    Time: "32 - 11 - 2024"
+}
+
 function Configurations() {
     return (
         <div>
@@ -27,7 +37,7 @@ function Configurations() {
                                     <option value="No">Không</option>
                                 </select>
                             </div><br />
-                            <div className="line">Số bản sao<input className="box" type="number" min="1" defaultValue={1} style={{marginLeft: "85px", width: "100px"}}/></div><br />
+                            <div className="line">Số bản sao<input className="box" type="number" min="1" defaultValue={1} style={{marginLeft: "88px", width: "100px"}}/></div><br />
                             <div className="line">Loại giấy
                                 <select className="box" style={{marginLeft: "105px"}}>
                                     <option value="Letter">Letter</option>
@@ -44,15 +54,15 @@ function Configurations() {
                                 </select>
                             </div><br />
                             <div className="line">Tỉ lệ in
-                                <input className="box" type="number" min="1" max="1000" defaultValue={100} style={{marginLeft: "127px"}}/>
+                                <input className="box" type="number" min="1" max="1000" defaultValue={100} style={{marginLeft: "123px"}}/>
                                 <span class="input-group-text">%</span>    
                             </div><br />
 
                             <div className="line" style={{fontSize: "20px", marginTop: "10px", marginBottom: "10px"}}><b>Thông tin sinh viên</b></div>
-                            <div className="line">Họ và tên: </div>
-                            <div className="line">Mã số sinh viên: </div>
-                            <div className="line">Email: </div>
-                            <div className="line">Khoa: </div>
+                            <div className="line">Họ và tên: <span style={{marginLeft:"10px"}}>{record.Name}</span></div>
+                            <div className="line">Mã số sinh viên: <span style={{marginLeft:"10px"}}>{record.ID}</span></div>
+                            <div className="line">Email: <span style={{marginLeft:"10px"}}>{record.Email}</span></div>
+                            <div className="line">Khoa: <span style={{marginLeft:"10px"}}>{record.Faculty}</span></div>
 
                             <ButtonGroup style={{marginLeft: "90px", marginTop: "30px"}}>
                                 <Button onPress={() => {}} variant="subtle">Quay lại</Button>

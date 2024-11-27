@@ -16,10 +16,10 @@ import { Button } from "primitives";
 import { IconChevronDown, IconCopy, IconTrash2, IconEdit2 } from "icons";
 
 const records = [
-    { MSSV: "2252938", printer: "Printer A", date: "2024-11-20", status: "Completed" },
-    { MSSV: "2252939", printer: "Printer B", date: "2024-11-19", status: "Pending" },
-    { MSSV: "2252940", printer: "Printer C", date: "2024-11-18", status: "Completed" },
-    { MSSV: "2252941", printer: "Printer D", date: "2024-11-17", status: "Pending" },
+    { printer: "Printer A", date: "2024-11-20", status: "Completed" },
+    { printer: "Printer B", date: "2024-11-19", status: "Pending" },
+    { printer: "Printer C", date: "2024-11-18", status: "Completed" },
+    { printer: "Printer D", date: "2024-11-17", status: "Pending" },
 ];
 
 function UserLog() {
