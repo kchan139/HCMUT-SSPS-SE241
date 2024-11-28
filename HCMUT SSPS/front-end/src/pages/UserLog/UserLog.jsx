@@ -123,11 +123,7 @@ function UserLog() {
                             Trạng thái<IconChevronDown />
                         </Button>
                         </th>
-                        <th>
-                        <Button onPress={() => alert("Hành động clicked")} variant="neutral" className="buttonTable">
-                            Hành động
-                        </Button>
-                        </th>
+                        
                     </tr>
                     </thead>
                     <tbody>
@@ -136,17 +132,7 @@ function UserLog() {
                         <td>{record.printer}</td>
                         <td>{record.date}</td>
                         <td>{record.status}</td>
-                        <td>
-                            <Button onPress={() => alert("Copy clicked")} variant="neutral" className="buttonTable">
-                                <IconCopy className="icon-black" />
-                            </Button>
-                            <Button onPress={() => alert("Edit clicked")} variant="neutral" className="buttonTable">
-                                <IconEdit2 className="icon-black" />
-                            </Button>
-                            <Button onPress={() => alert("Delete clicked")} variant="neutral" className="buttonTable">
-                                <IconTrash2 className="icon-black" />
-                            </Button>
-                        </td>
+                        
                         </tr>
                     ))}
                     </tbody>
