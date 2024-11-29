@@ -20,28 +20,28 @@ function PrintingComplete(){
     return(
         <div>
             <Navbar property="Registered User"/>
-            <div className="background">
+            <div className="background_PrintingComplete">
                 <img
                     src={BackgroundSVG}
-                    alt="Background"
-                    className="background-image"
+                    alt="Background_PrintingComplete"
+                    className="background-image_PrintingComplete"
                 />{
-                    <div className="content">
-                        <div className="border">
-                            <div className="header">Gửi yêu cầu in thành công</div>
-                            <div className="line1">Tài liệu in của bạn đang được xử lý, cảm ơn vì đã sử dụng dịch vụ</div>
-                            <div className="line2" style={{fontSize:"20px"}}><b>Thông tin</b></div>
+                    <div className="content_PrintingComplete">
+                        <div className="border_PrintingComplete">
+                            <div className="header_PrintingComplete">Gửi yêu cầu in thành công</div>
+                            <div className="line1_PrintingComplete">Tài liệu in của bạn đang được xử lý, cảm ơn vì đã sử dụng dịch vụ</div>
+                            <div className="line2_PrintingComplete" style={{fontSize:"20px"}}><b>Thông tin</b></div>
                             <div style={{ display: "flex", gap: "200px" }}>
                                 <span>
-                                    <div className="line2">Họ và tên: <span style={{marginLeft:"10px"}}>{record.Name}</span></div>
-                                    <div className="line2">Mã số sinh viên: <span style={{marginLeft:"10px"}}>{record.ID}</span></div>
-                                    <div className="line2">Email: <span style={{marginLeft:"10px"}}>{record.Email}</span></div>
-                                    <div className="line2">Khoa: <span style={{marginLeft:"10px"}}>{record.Faculty}</span></div>
+                                    <div className="line2_PrintingComplete">Họ và tên: <span style={{marginLeft:"10px"}}>{record.Name}</span></div>
+                                    <div className="line2_PrintingComplete">Mã số sinh viên: <span style={{marginLeft:"10px"}}>{record.ID}</span></div>
+                                    <div className="line2_PrintingComplete">Email: <span style={{marginLeft:"10px"}}>{record.Email}</span></div>
+                                    <div className="line2_PrintingComplete">Khoa: <span style={{marginLeft:"10px"}}>{record.Faculty}</span></div>
                                 </span>
                                 <span>
-                                    <div className="line2">Mã yêu cầu: <span style={{marginLeft:"10px"}}>{record.Code}</span></div>
-                                    <div className="line2">Địa điểm: <span style={{marginLeft:"10px"}}>{record.Area}</span></div>
-                                    <div className="line2">Thời gian yêu cầu: <span style={{marginLeft:"10px"}}>{record.Time}</span></div>
+                                    <div className="line2_PrintingComplete">Mã yêu cầu: <span style={{marginLeft:"10px"}}>{record.Code}</span></div>
+                                    <div className="line2_PrintingComplete">Địa điểm: <span style={{marginLeft:"10px"}}>{record.Area}</span></div>
+                                    <div className="line2_PrintingComplete">Thời gian yêu cầu: <span style={{marginLeft:"10px"}}>{record.Time}</span></div>
                                 </span>    
                             </div>
                             

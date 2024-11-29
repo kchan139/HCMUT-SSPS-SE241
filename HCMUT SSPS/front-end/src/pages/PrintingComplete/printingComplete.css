@@ -4,7 +4,7 @@
     min-height: 100vh; /* Full view height */
 }
 
-.background {
+.background_PrintingComplete {
     position: relative;
     flex-grow: 1; /* Take up all available space */
     display: flex;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.background-image {
+.background-image_PrintingComplete {
     position: absolute;
     top: 0;
     left: 0;
@@ -22,14 +22,14 @@
     z-index: -1; /* Place behind all other content */
 }
 
-.content {
+.content_PrintingComplete {
     position: relative;
     justify-content: center;
     padding: 40px 20px;
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.border {
+.border_PrintingComplete {
     width: 1000px;
     padding: 45px 100px 39px 100px;
     justify-content: center;
@@ -37,7 +37,7 @@
     background: #FFF;
 }
 
-.header {
+.header_PrintingComplete {
     color: #001C64;
     text-align: center;
     font-family: Inter;
@@ -48,7 +48,7 @@
     align-self: stretch;
 }
 
-.line1 {
+.line1_PrintingComplete {
     color: #000;
     text-align: center;
     font-family: Inter;
@@ -59,7 +59,7 @@
     align-self: stretch;
 }
 
-.line2 {
+.line2_PrintingComplete {
     color: #000;
     margin-top: 15px;
     margin-left: 40px;

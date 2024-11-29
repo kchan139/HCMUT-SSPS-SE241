@@ -4,7 +4,7 @@
     min-height: 100vh; /* Full view height */
 }
 
-.background {
+.background_UserLog {
     position: relative;
     flex-grow: 1; /* Take up all available space */
     display: flex;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.background-image {
+.background-image_UserLog {
     position: absolute;
     top: 0;
     left: 0;
@@ -22,19 +22,19 @@
     z-index: -1; /* Place behind all other content */
 }
 
-.content {
+.content_UserLog {
     position: relative;
     text-align: center;
     padding: 40px 20px;
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.input-wrapper {
+.input-wrapper_UserLog {
     position: relative;
     width: 100%; /* Ensure the input-wrapper takes full width */
 }
 
-.searchBar {
+.searchBar_UserLog {
     background-color: white;
     width: 100%; /* Full width for the input */
     padding-right: 10px; /* Space for the icon */
@@ -47,9 +47,9 @@
 
 .icon-black path {
     stroke: black;
-  }
+}
 
-.icon-search {
+.icon-search_UserLog {
     position: absolute;
     left: 10px; /* Adjust for spacing inside the input */
     top: 50%; /* Center vertically */
@@ -58,7 +58,7 @@
     font-size: 1.2rem; /* Optional size */
 }
 
-.container {
+.container_UserLog {
     width: 80%;
     height: 80%;
     display: flex;
@@ -67,7 +67,7 @@
     justify-content: space-between;
 }
 
-.buttonTable {
+.buttonTable_UserLog {
     font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -91,7 +91,7 @@
     line-height: 24px;
 }
 
-.custom-table {
+.custom-table_UserLog {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
@@ -115,8 +115,4 @@
 
 .custom-table tbody {
     background: white;
-}
-
-.button-variant-subtle {
-    --button-background-color: none;
 }

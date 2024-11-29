@@ -4,7 +4,7 @@
     min-height: 100vh; /* Full view height */
 }
 
-.background {
+.background_choosePrinter {
     position: relative;
     flex-grow: 1; /* Take up all available space */
     display: flex;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.background-image {
+.background-image_choosePrinter {
     position: absolute;
     top: 0;
     left: 0;
@@ -22,14 +22,14 @@
     z-index: -1; /* Place behind all other content */
 }
 
-.content {
+.content_choosePrinter {
     position: relative;
     justify-content: center;
     padding: 40px 20px;
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.header {
+.header_choosePrinter {
     font-family: Inter;
     font-size: 32px;
     font-style: normal;
@@ -40,7 +40,7 @@
     text-align: center;
 }
 
-.border {
+.border_choosePrinter {
     display: flex;
     padding: 55px 70px 35px 70px;
     flex-direction: column;
@@ -50,7 +50,7 @@
     background: rgba(255, 255, 255, 0.15);
 }
 
-.bar {
+.bar_choosePrinter {
     width: 800px;
     height: 60px;
     flex-shrink: 0;
@@ -58,7 +58,7 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.line {
+.line_choosePrinter {
     color: #000;
     font-family: Inter;
     font-size: 18px;
@@ -67,13 +67,13 @@
     line-height: 10px;
 }
 
-.printerIcon {
+.printerIcon_choosePrinter {
     margin-top: 10px;
     margin-left: 30px;
     margin-right: 20px;
 }
 
-.radioButton {
+.radioButton_choosePrinter {
     width: 16px;
     height: 16px;
     margin-left: 500px;

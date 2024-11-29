@@ -100,9 +100,9 @@ function UserLog() {
                     justifyContent: "center",
                     alignItems: "center",
                 }}>
-                <div className="container">
+                <div className="container_UserLog">
                 <div className="input-wrapper">
-                    <input className="searchBar" placeholder="Search..." />
+                    <input className="searchBar_UserLog" placeholder="Search..." />
                     <IconSearch className="icon-search icon-black" />
                 </div>
                 <table className="custom-table">
@@ -132,7 +132,6 @@ function UserLog() {
                         <td>{record.printer}</td>
                         <td>{record.date}</td>
                         <td>{record.status}</td>
-                        
                         </tr>
                     ))}
                     </tbody>
