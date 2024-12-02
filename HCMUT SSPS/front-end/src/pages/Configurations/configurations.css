@@ -4,7 +4,7 @@
     min-height: 100vh; /* Full view height */
 }
 
-.background {
+.background_Configurations {
     position: relative;
     flex-grow: 1; /* Take up all available space */
     display: flex;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.background-image {
+.background-image_Configurations {
     position: absolute;
     top: 0;
     left: 0;
@@ -22,80 +22,55 @@
     z-index: -1; /* Place behind all other content */
 }
 
-.content {
+.content_Configurations {
     position: relative;
     justify-content: center;
     padding: 40px 20px;
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.title {
-    font-size: 36px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.upload-section {
-    margin-top: 20px;
-}
-
-.upload-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    color: #000;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.file-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-}
-
-.drag-and-drop-text {
-    margin-top: 12px;
-    color: #ccc;
-    font-size: 14px;
-}
-
-.border {
+.border_Configurations {
     width: 1000px;
-    height: 622px;
+    height: 610px;
     flex-shrink: 0;
     background: #FFF;
 }
 
-.header {
-    height: 46.982px;
+.header_Configurations {
+    height: 47px;
     align-self: stretch;
-    margin-top: 50px;
     margin-left: 100px;
+    margin-bottom: 50px;
     color: #001C64;
     font-family: Inter;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 100px;
 }
 
-.line {
+.line_Configurations {
     margin-left: 100px;
-    line-height: 100px;
+    margin-top: 10px;
+    line-height: 90px;
     color: #000;
     font-family: Inter;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
 }
 
-.box {
+.box_Configurations {
     border-radius: 5px;
     border: 2px solid #4e4a4a;
     appearance: auto;
+}
+
+.button-variant-subtle {
+    --button-background-color: rgba(66, 66, 71, 0.509);
+}
+
+.button-variant-primary {
+    --button-background-color: rgb(0, 64, 255);
 }
