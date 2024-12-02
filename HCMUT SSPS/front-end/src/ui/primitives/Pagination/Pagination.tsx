@@ -18,15 +18,18 @@ export function Pagination({
 export function PaginationPrevious({
   href = null,
   children = "Previous",
+  onPress,
 }: {
   href?: string | null;
   children?: React.ReactNode;
+  onPress?: () => void;
 }) {
   return (
     <Button
       {...(href === null ? { disabled: true } : { href })}
       variant="subtle"
       aria-label="Previous page"
+      onPress={onPress}
     >
       <IconArrowLeft />
       {children}
@@ -37,15 +40,18 @@ export function PaginationPrevious({
 export function PaginationNext({
   href = null,
   children = "Next",
+  onPress,
 }: {
   href?: string | null;
   children?: React.ReactNode;
+  onPress?: () => void;
 }) {
   return (
     <Button
       {...(href === null ? { disabled: true } : { href })}
       variant="subtle"
       aria-label="Next page"
+      onPress={onPress}
     >
       {children}
       <IconArrowRight />
@@ -62,10 +68,12 @@ export function PaginationPage({
   href,
   children,
   current = false,
+  onPress,
 }: {
   href: string;
   children: string;
   current?: boolean;
+  onPress?: () => void;
 }) {
   return (
     <Button
@@ -74,6 +82,7 @@ export function PaginationPage({
       aria-current={current ? "page" : undefined}
       variant={current ? "primary" : "subtle"}
       className={clsx()}
+      onPress={onPress}
     >
       <span className="">{children}</span>
     </Button>
