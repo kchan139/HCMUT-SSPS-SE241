@@ -18,13 +18,13 @@
 
 .home-frame {
     display: flex;
-    width: 1000px;
-    height: 700px;
+    width: 80%;
+    height: 100vh;
     flex-direction: column;
     align-items: center;
     gap: 30px;
     flex-shrink: 0;
-    padding: 20px;
+    padding: 50px;
 }
 
 .home-frame .text-wrapper {

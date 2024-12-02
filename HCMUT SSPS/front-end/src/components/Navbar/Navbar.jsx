@@ -41,13 +41,6 @@ export const Navbar = ({ property }) => {
                             </Button>
                         </>
                     )}
-                    {property === "Guest" && (
-                        <>
-                            <Button className="navbar-button" onPress={() => alert("Trang chủ clicked!")}>
-                                Trang chủ
-                            </Button>
-                        </>
-                    )}
                 </div>
 
                 {/* Additional Links */}
