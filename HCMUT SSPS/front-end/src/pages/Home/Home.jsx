@@ -4,7 +4,20 @@ import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
 import { IconFilePlus } from "icons"
 import { Button } from "primitives"
+import { useNavigate } from "react-router-dom";
 import "./home.css";
+
+function NavigationButtons(){
+    const navigate = useNavigate();
+    return(
+        <Button onPress={() => navigate("/ChoosePrinter")}
+                variant="primary"
+        >
+            <IconFilePlus />
+            Chọn tệp từ thiết bị
+        </Button>
+    )
+}
 
 function Home() {
     return (
@@ -20,13 +33,7 @@ function Home() {
                     <div className="text-wrapper">Tải tài liệu</div>
                     <div className="home-frame-wrapper">
                         <div className="button-div">
-                            <Button
-                                onPress={() => {}}
-                                variant="neutral"
-                            >
-                                <IconFilePlus />
-                                Chọn tệp từ thiết bị
-                            </Button>
+                            <NavigationButtons/>
                             <p className="text-wrapper-2">
                                 Hoặc kéo thả tệp của bạn vào đây
                             </p>

@@ -4,13 +4,13 @@ import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
 import { IconFilePlus } from "icons"
 import { Button } from "primitives"
-import "./login.css";
+import "./adminLogin.css";
 import { useNavigate } from "react-router-dom";
 
 function NavigationButtons(){
     const navigate = useNavigate();
     return(
-        <Button onPress={() => navigate("/Home")}
+        <Button onPress={() => navigate("/Admin_history")}
                 variant="primary"
                 state="default"
                 size="medium"
@@ -19,63 +19,56 @@ function NavigationButtons(){
     )
 }
 
-function Home() {
-    const navigate = useNavigate();
-    
+function AdminLogin() {
     return (
         <div>
-            <Navbar property="Registered User" />
+            <Navbar property="Admin" />
 
-            <div className="login-section">
-                <div className="login-content">
-                    <div className="left-pane">
-                        <form className="login-form">
+            <div className="login-section_AdminLogin">
+                <div className="login-content_AdminLogin">
+                    <div className="left-pane_AdminLogin">
+                        <form className="login-form_AdminLogin">
                             {/* Caption */}
-                            <p className="form-caption">
-                                <Button className="navbar-button" onPress={() => navigate("/AdminLogin")}>
-                                Bạn là quản trị viên? <u>Đăng nhập dưới quyền quản trị để tiếp tục.</u>
-                                </Button>
-                            </p>
 
-                            <div className="form-content">
+                            <div className="form-content_AdminLogin">
                                 {/* Username Field */}
-                                <div className="form-group">
-                                    <label htmlFor="username" className="form-label">
+                                <div className="form-group_AdminLogin">
+                                    <label htmlFor="username" className="form-label_AdminLogin">
                                         Tên đăng nhập
                                     </label>
                                     <input
                                         id="username"
                                         type="text"
-                                        className="form-input"
+                                        className="form-input_AdminLogin"
                                     />
                                 </div>
 
                                 {/* Password Field */}
-                                <div className="form-group">
-                                    <label htmlFor="password" className="form-label">
+                                <div className="form-group_AdminLogin">
+                                    <label htmlFor="password" className="form-label_AdminLogin">
                                         Mật khẩu
                                     </label>
                                     <input
                                         id="password"
                                         type="password"
-                                        className="form-input"
+                                        className="form-input_AdminLogin"
                                     />
                                 </div>
 
                                 {/* Remember Me Checkbox */}
-                                <div className="form-group">
+                                <div className="form-group_AdminLogin">
                                     <input
                                         id="remember-me"
                                         type="checkbox"
-                                        className="form-checkbox"
+                                        className="form-checkbox_AdminLogin"
                                     />
-                                    <label htmlFor="remember-me" className="form-checkbox-label">
+                                    <label htmlFor="remember-me" className="form-checkbox-label_AdminLogin">
                                         Ghi nhớ đăng nhập
                                     </label>
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="form-group">
+                                <div className="form-group_AdminLogin">
                                     <NavigationButtons/>
                                 </div>
                             </div>
@@ -89,4 +82,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default AdminLogin;

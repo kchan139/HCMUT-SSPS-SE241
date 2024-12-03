@@ -4,7 +4,7 @@
     min-height: 100vh; /* Full view height */
 }
 
-.background {
+.background_PrintingComplete {
     position: relative;
     flex-grow: 1; /* Take up all available space */
     display: flex;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.background-image {
+.background-image_PrintingComplete {
     position: absolute;
     top: 0;
     left: 0;
@@ -22,43 +22,50 @@
     z-index: -1; /* Place behind all other content */
 }
 
-.content {
+.content_PrintingComplete {
     position: relative;
     justify-content: center;
     padding: 40px 20px;
     z-index: 1; /* Ensure it sits above the background */
 }
 
-.title {
-    font-size: 36px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.upload-section {
-    margin-top: 20px;
-}
-
-.upload-button {
-    display: inline-flex;
-    align-items: center;
+.border_PrintingComplete {
+    width: 1000px;
+    padding: 45px 100px 39px 100px;
     justify-content: center;
-    background: #fff;
+    align-items: center;
+    background: #FFF;
+}
+
+.header_PrintingComplete {
+    color: #001C64;
+    text-align: center;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px;
+    align-self: stretch;
+}
+
+.line1_PrintingComplete {
     color: #000;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    align-self: stretch;
 }
 
-.file-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-}
-
-.drag-and-drop-text {
-    margin-top: 12px;
-    color: #ccc;
-    font-size: 14px;
+.line2_PrintingComplete {
+    color: #000;
+    margin-top: 15px;
+    margin-left: 40px;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
 }

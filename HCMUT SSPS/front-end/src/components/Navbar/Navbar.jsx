@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import { Logo } from "../Logo/Logo";
 import { Button } from "primitives"; // Replace with your Button import
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = ({ property }) => {
+    const navigate = useNavigate();
     return (
         <div className="navbar">
             {/* Navbar Content */}
@@ -17,34 +19,30 @@ export const Navbar = ({ property }) => {
                     {/* Buttons based on property */}
                     {property === "Admin" && (
                         <>
-                            <Button className="navbar-button" onPress={() => alert("Trang chủ clicked!")}>
+                            <Button className="navbar-button" onPress={() => alert("/Admin_history")}>
                                 Trang chủ
                             </Button>
-                            <Button className="navbar-button" onPress={() => alert("Lịch sử clicked!")}>
+                            <Button className="navbar-button" onPress={() => navigate("/Admin_history")}>
                                 Lịch sử
                             </Button>
-                            <Button className="navbar-button" onPress={() => alert("Thống kê clicked!")}>
+                            <Button className="navbar-button" onPress={() => alert("No functions yet")}>
                                 Thống kê
                             </Button>
-                            <Button className="navbar-button" onPress={() => alert("Quản lý clicked!")}>
+                            <Button className="navbar-button" onPress={() => navigate("/Manage_Printer")}>
                                 Quản lý
                             </Button>
                         </>
                     )}
                     {property === "Registered User" && (
                         <>
-                            <Button className="navbar-button" onPress={() => alert("Trang chủ clicked!")}>
+                            <Button className="navbar-button" onPress={() => navigate("/Home")}>
                                 Trang chủ
                             </Button>
-                            <Button className="navbar-button" onPress={() => alert("Lịch sử clicked!")}>
+                            <Button className="navbar-button" onPress={() => navigate("/UserLog")}>
                                 Lịch sử
                             </Button>
-                        </>
-                    )}
-                    {property === "Guest" && (
-                        <>
-                            <Button className="navbar-button" onPress={() => alert("Trang chủ clicked!")}>
-                                Trang chủ
+                            <Button className="navbar-button" onPress={() => navigate("/Buy_Page")}>
+                                Mua trang in
                             </Button>
                         </>
                     )}
@@ -57,7 +55,7 @@ export const Navbar = ({ property }) => {
                             Đăng nhập
                         </Button>
                     ) : (
-                        <Button className="navbar-button" onPress={() => alert("Đăng xuất clicked!")}>
+                        <Button className="navbar-button" onPress={() => navigate("/")}>
                             Đăng xuất
                         </Button>
                     )}
