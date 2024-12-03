@@ -22,7 +22,7 @@ function NavigationButtons(){
 function AdminLogin() {
     return (
         <div>
-            <Navbar property="Admin" />
+            <Navbar property="Guest" />
 
             <div className="login-section_AdminLogin">
                 <div className="login-content_AdminLogin">

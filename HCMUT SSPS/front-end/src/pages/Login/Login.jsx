@@ -24,7 +24,7 @@ function Home() {
     
     return (
         <div>
-            <Navbar property="Registered User" />
+            <Navbar property="Guest" />
 
             <div className="login-section">
                 <div className="login-content">
