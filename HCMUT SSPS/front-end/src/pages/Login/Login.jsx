@@ -60,11 +60,10 @@ function Home() {
                                 {/* Submit Button */}
                                 <div className="form-group">
                                     <Button
-                                        onPress={() => alert("Đăng nhập thành công!")}
+                                        onPress={() => navigate("/Home")}
                                         variant="primary"
                                         state="default"
                                         size="medium"
-                                        
                                     >
                                         Đăng nhập
                                     </Button>

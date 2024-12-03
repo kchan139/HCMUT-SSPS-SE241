@@ -4,6 +4,7 @@ import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
 import { IconFilePlus } from "icons"
 import { Button } from "primitives"
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 
 function Home() {
