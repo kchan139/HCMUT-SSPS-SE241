@@ -101,25 +101,25 @@ function UserLog() {
                     alignItems: "center",
                 }}>
                 <div className="container_UserLog">
-                <div className="input-wrapper">
+                <div className="input-wrapper_UserLog">
+                    <IconSearch className="icon-search_UserLog icon-black" />
                     <input className="searchBar_UserLog" placeholder="Search..." />
-                    <IconSearch className="icon-search icon-black" />
                 </div>
                 <table className="custom-table">
                     <thead>
                     <tr>
                         <th>
-                        <Button onPress={() => alert("Máy in clicked")} variant="neutral" className="buttonTable">
+                        <Button onPress={() => alert("Máy in clicked")} variant="neutral" className="buttonTable_UserLog ">
                             Máy in<IconChevronDown />
                         </Button>
                         </th>
                         <th>
-                        <Button onPress={() => alert("Ngày in clicked")} variant="neutral" className="buttonTable">
+                        <Button onPress={() => alert("Ngày in clicked")} variant="neutral" className="buttonTable_UserLog">
                             Ngày in<IconChevronDown />
                         </Button>
                         </th>
                         <th>
-                        <Button onPress={() => alert("Trạng thái clicked")} variant="neutral" className="buttonTable">
+                        <Button onPress={() => alert("Trạng thái clicked")} variant="neutral" className="buttonTable_UserLog">
                             Trạng thái<IconChevronDown />
                         </Button>
                         </th>

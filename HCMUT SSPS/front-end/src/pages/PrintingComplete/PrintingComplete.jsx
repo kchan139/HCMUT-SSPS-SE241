@@ -5,6 +5,7 @@ import BackgroundSVG from "../../assets/background.svg"; // Path to the SVG
 import "./printingComplete.css"
 import { ButtonGroup } from "primitives"
 import { Button } from "primitives"
+import { useNavigate } from "react-router-dom";
 
 const record = {
     Name: "Nguyen Van Teo",
@@ -14,6 +15,15 @@ const record = {
     Code: "MF125241242",
     Area: "A4 - 402",
     Time: "32 - 11 - 2024"
+}
+
+function NavigationButtons(){
+    const navigate = useNavigate();
+    return(
+        <ButtonGroup style={{marginTop: "20px"}}>
+            <Button onPress={() => navigate("/Home")} variant="primary">Trở về trang chủ</Button>
+        </ButtonGroup>
+    )
 }
 
 function PrintingComplete(){
@@ -48,9 +58,7 @@ function PrintingComplete(){
 
                             <div style={{width:"100px", height:"100px"}}></div>
 
-                            <ButtonGroup style={{marginTop: "20px"}}>
-                            <Button onPress={() => {}} variant="primary">Trở về trang chủ</Button>
-                            </ButtonGroup>
+                            <NavigationButtons/>
                         </div>
                     </div>
                 }

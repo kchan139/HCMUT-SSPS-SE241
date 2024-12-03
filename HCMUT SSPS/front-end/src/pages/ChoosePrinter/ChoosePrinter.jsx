@@ -12,7 +12,7 @@ function NavigationButtons(){
     const navigate = useNavigate();
     return(
         <ButtonGroup align="justify">
-            <Button onPress={() => {}} variant="subtle">Quay lại</Button>
+            <Button onPress={() => navigate("/Home")} variant="subtle">Quay lại</Button>
             <Button onPress={() => navigate("/Configurations")} variant="primary">Tiếp tục</Button>
         </ButtonGroup>
     )

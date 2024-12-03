@@ -23,7 +23,7 @@ function NavigationButtons(){
     const navigate = useNavigate();
     return(
         <ButtonGroup style={{marginLeft: "90px", marginTop: "30px"}}>
-            <Button onPress={() => navigate("/")} variant="subtle">Quay lại</Button>
+            <Button onPress={() => navigate("/ChoosePrinter")} variant="subtle">Quay lại</Button>
             <Button onPress={() => navigate("/PrintingComplete")} variant="primary">Tiếp tục</Button>
         </ButtonGroup>
     )
