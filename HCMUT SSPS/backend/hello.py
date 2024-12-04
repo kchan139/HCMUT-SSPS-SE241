@@ -1,8 +1,16 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file, abort
 from flask_cors import CORS
+import os
+from pdf2image import convert_from_path
+from PIL import Image
+import io
+import shutil
 
 app = Flask(__name__)
 CORS(app)
+UPLOAD_FOLDER = './uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Example data structure
 printers = [
@@ -11,6 +19,95 @@ printers = [
     {"id": 3, "name": "A4 - 402: Printer 3", "status": "Available"},
     {"id": 4, "name": "A4 - 402: Printer 4", "status": "Available"},
 ]
+
+allowed_extensions = [
+    {"Extension": "pdf", "Status": "Allow"},
+    {"Extension": "jpg", "Status": "Allow"},
+    {"Extension": "png", "Status": "Allow"},
+]   
+
+@app.route('/api/get-file', methods=['GET'])
+def get_file():
+    try:
+        # Get a list of all files in the uploads folder
+        files = sorted(os.listdir(UPLOAD_FOLDER))
+        
+        if not files:
+            abort(404, "No files found in the uploads folder.")
+        
+        # Select the first file
+        first_file_path = os.path.join(UPLOAD_FOLDER, files[0])
+        file_extension = first_file_path.split('.')[-1].lower()
+
+        if file_extension == 'pdf':
+            # For PDF: convert the first page to an image
+            images = convert_from_path(first_file_path, first_page=1, last_page=1, poppler_path="E:/HCMUT-year 3 project/HCMUT-SPSS-SE241/HCMUT SSPS/backend/Release-24.08.0-0/poppler-24.08.0/Library/bin")  # Convert first page
+            image = images[0]
+
+            # Save the image to a BytesIO buffer
+            img_io = io.BytesIO()
+            image.save(img_io, 'PNG')
+            img_io.seek(0)
+
+            return send_file(img_io, mimetype='image/png')
+        
+        elif file_extension in ['jpg', 'jpeg', 'png', 'gif']:
+            # For image files: simply return the image
+            return send_file(first_file_path, mimetype=f'image/{file_extension}')
+        
+
+        else:
+            abort(415, "Unsupported file type for preview.")
+    
+    except Exception as e:
+        abort(500, f"Error fetching file: {str(e)}")
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part in the request"}), 400
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    if file:
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        file.save(filepath)  # Save file to upload folder
+
+        return jsonify({"message": "File uploaded successfully", "filename": file.filename}), 200
+    else:
+        return jsonify({"error": "File type not allowed"}), 400
+
+@app.route('/api/delete-uploads', methods=['DELETE'])
+def delete_uploads():
+    try:
+        # Check if the directory exists
+        if os.path.exists(UPLOAD_FOLDER):
+            # Remove the directory and all its contents
+            shutil.rmtree(UPLOAD_FOLDER)
+            return jsonify({"message": "Uploads directory deleted successfully"}), 200
+        else:
+            abort(404, "Uploads directory not found.")
+    
+    except Exception as e:
+        abort(500, f"Error deleting uploads directory: {str(e)}")
+# Endpoint to get the allowed extensions
+@app.route('/api/allowed-extensions', methods=['GET'])
+def get_allowed_extensions():
+    return jsonify({"allowed_extensions": allowed_extensions})
+
+# Endpoint to update allowed extensions
+@app.route('/api/allowed-extensions', methods=['PUT'])
+def update_allowed_extensions():
+    data = request.json  # The new allowed extensions data from the frontend
+    # Update the allowed extensions based on the received data
+    for index, ext in enumerate(allowed_extensions):
+        # Check if the extension is in the request data
+        ext["Status"] = data[index]["Status"]  # Update the status (Allow/Not Allow)
+
+    return jsonify({"message": "Allowed extensions updated", "allowed_extensions": allowed_extensions})
 
 @app.route('/api/printers', methods=['GET'])
 def get_printers():
