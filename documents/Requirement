@@ -1,0 +1,100 @@
+# Requirement Document
+
+## 1.1	Domain Context
+The Student Smart Printing Service (HCMUT_SSPS) operates within the domain of university printing services at Ho Chi Minh City University of Technology (HCMUT). This system is designed to streamline document printing for students in the university.
+
+Users can upload documents, select from available printers, and configure printing options such as paper size, page count, and number of copies. The system ensures that students can print efficiently while tracking their usage through comprehensive logs that include student IDs, printer IDs, and timestamps for each print job.
+
+The service includes a page balance management feature, providing each student with a default number of A4 pages each semester and allowing them to purchase additional pages through an integrated online payment system like BKPay. Administrators, known as the Student Printing Service Officers (SPSOs), have the capability to manage printer settings, adjust page limits, and configure permitted file types.
+
+Automated reports on printing activity are generated at the end of each month and year, giving the SPSO insights into usage trends. All users must authenticate through the HCMUT_SSO service to ensure secure access to the system. The Student Smart Printing Service is available via both web and mobile applications.
+
+## 1.2	Stakeholders and Needs
+Students (Users)
+Primary users of the printing service.
+They upload documents, select printing options, and manage their printing balance.
+They can view their personal printing logs and summaries.
+They can purchase additional printing pages via the system.
+Student Printing Service Officer (SPSO)
+Administrators of the system.
+Responsible for managing printer configurations (adding, enabling, disabling printers).
+Configures system settings like default pages, permitted file types, and printing limits.
+Monitors printing activity logs and generates reports.
+Manages the default number of pages provided to students each semester.
+HCMUT IT Department / System Administrators
+Manages the technical infrastructure of the system.
+Ensures that the system is integrated with the university’s SSO authentication service.
+Responsible for system updates, maintenance, and performance optimization.
+University Administration (Policy Makers)
+Oversees the allocation of resources and budget for the printing service.
+Decides on policies like the default number of pages provided to students each semester.
+Reviews system-generated reports for operational insights.
+Payment Service Provider (e.g., BKPay)
+Provides the payment gateway for students to purchase additional printing pages.
+Manages payment transactions and ensures smooth integration with the university’s financial systems.
+
+## 1.3	Benefits of the System
+Students: Can print their documents more comfortably through their phone or laptop with flexible timing on their ends. Further quality of life features like easy paying or usage tracking for their own profile.
+
+HCMUT IT Department / System Administrators: The system helps keep track of the status of multiple printers at the same time so that it is easier to notice bugs and malfunctions for system fixing updates.
+
+Student Printing Service Officers (SPSO): Easier to keep track of the printers’ activity as well as managing them through the system, reducing manual tasks.  
+
+University Administration (Policy Makers):: Automated reports provides insight on students usage and resource management, allows for further budgeting and optimization on the system
+
+Payment service providers (BKPay, ZaloPay, MoMo, ...): Have more transaction opportunities from students buying pages for printing.
+
+## 1.4	Functional Requirements
+
+### 1.4.1. Students (Users)
+
+Students are the primary users of the system. They need features to upload documents, select printers, manage their balances, and view logs. The functional requirements for students are:
+1.	Students can upload document files (limited to specific file types) for printing through the web or mobile app.
+2.	Students can select a printer and configure print settings (e.g., number of copies, paper size, one-sided or double-sided).
+3.	Students can view their personal printing logs including the printer ID, file name, and time of printing.
+4.	Students can confirm/cancel the print settings before completing the printing process.
+5.	Students can purchase additional printing pages through the integrated payment system BKPay.
+
+### 1.4.2. Student Printing Service Officer (SPSO)
+
+SPSO administrators need to manage printers, monitor printing activity, and generate reports. The functional requirements for SPSO are:
+1.	SPSO can add, enable, or disable printers in the system.
+2.	SPSO can set the permitted file types that students can upload for printing (e.g., PDF, DOCX).
+3.	SPSO can view printing logs for all students, including detailed information such as student ID, printer ID, and time of printing.
+4.	SPSO can adjust the default number of print pages assigned to students per semester.
+5.	The system shall automatically generate monthly and yearly reports summarizing printing usage across all printers and students.
+
+### 1.4.3. HCMUT IT Department / System Administrators
+System administrators are responsible for the technical infrastructure and ensuring system performance. The functional requirements for IT/System Administrators are:
+1.	The system must integrate with the HCMUT SSO for user authentication, ensuring only authorized students and staff can access the system.
+2.	The system shall monitor printer statuses and report any malfunctions or errors to the IT department for timely maintenance.
+3.	IT administrators can perform system updates (e.g., adding new printers or updating features) without disrupting the ongoing printing services.
+4.	The system must store all printing logs and reports securely, ensuring data privacy and integrity.
+5.	The system must manage user access rights, allowing different levels of access for students, SPSO, and IT staff.
+
+### 1.4.4. University Administration (Policy Makers)
+
+The university administration needs insights from reports to allocate resources and manage budgets. The functional requirements for the university administration are:
+1.	The system shall automatically generate usage reports, summarizing printing activities and associated costs on a monthly and yearly basis.
+2.	University administrators can access these reports through the system dashboard for budgeting and resource planning purposes.
+3.	Administrators can set printing policies, such as adjusting the default number of free pages students receive each semester.
+4.	The system must allow administrators to track the efficiency of printing resources, such as printer usage statistics, to improve cost optimization.
+5.	The system shall maintain a log of all report accesses by the administration for auditing purposes.
+
+### 1.4.5. Payment Service Providers (e.g., BKPay, ZaloPay, MoMo)
+Payment providers handle transactions for students purchasing additional printing pages. The functional requirements for payment service providers are:
+1.	The system must integrate with payment service providers like BKPay, allowing students to securely purchase additional printing pages.
+2.	The system must log each transaction, including the amount paid, student ID, and time of transaction.
+3.	The payment system shall notify the student and the SPSO of successful transactions, automatically updating the student's page balance.
+4.	Payment service providers must process refunds in case of errors or canceled transactions.
+5.	The system shall allow students to choose from multiple payment options, ensuring convenience and flexibility.
+
+## 1.5	Non- Functional Requirements
+1.	The system shall be available to all users from 7:00 AM to 5:00 PM, Monday to Saturday.
+2.	All users shall be authenticated by the HCMUT_SSO service before using the system.
+3.	The system shall be interoperable with roughly 80% of printers currently used at the university.
+4.	The system shall be able to proceed approximately 500 users accessing the service at the same time without overloading.
+5.	The system shall allow users to upload up to 1GB of documents at a time.
+6.	The system shall be accessed through a website on Google and be provided on Android(8.1 and above) and iOS(8 and above) devices.
+7.	The users shall be able to understand and use the basic functions of the system by reading the manual or instructions provided by the system developers.
+8.	The printing log saved in the system shall be in read-only mode.
