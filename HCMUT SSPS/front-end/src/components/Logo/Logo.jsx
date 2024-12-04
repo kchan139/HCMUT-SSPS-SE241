@@ -13,7 +13,7 @@ export const Logo = ({ property1, className }) => {
                     src={LogoImage}
                 />
 
-                <div className="text-wrapper">SPSS</div>
+                <div className="text-wrapper">SSPS</div>
             </div>
         </div>
     );

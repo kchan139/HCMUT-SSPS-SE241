@@ -29,7 +29,7 @@ function Home() {
     useEffect(() => {
         const fetchAllowedExtensions = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/allowed-extensions");
+                const response = await axios.get("http://127.0.0.1:5000/api/allowed-extensions");
                 setAllowedExtensions(response.data.allowed_extensions);
 
                 // Generate the accept attribute based on allowed extensions
