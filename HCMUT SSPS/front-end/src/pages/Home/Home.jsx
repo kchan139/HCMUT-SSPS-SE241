@@ -72,13 +72,6 @@ function Home() {
                     <div className="text-wrapper">Tải tài liệu</div>
                     <div className="home-frame-wrapper">
                         <div className="button-div">
-                            {/* File input for selecting PDF */}
-                            <input
-                                type="file"
-                                accept="application/pdf"
-                                onChange={handleFileChange}
-                                className="file-input"
-                            />
                             <p className="text-wrapper-2">
                                 Hoặc kéo thả tệp của bạn vào đây
                             </p>
