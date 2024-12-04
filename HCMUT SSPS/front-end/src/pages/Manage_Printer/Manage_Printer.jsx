@@ -10,6 +10,7 @@ const Manage_Printer = () => {
   const [printers, setPrinters] = useState([]);
   const [selectedPrinters, setSelectedPrinters] = useState([]);
   const [newPrinter, setNewPrinter] = useState("");
+  const [selectedExtensions, setSelectedExtensions] = useState([]);
 
   useEffect(() => {
     // Fetch printers from the backend
@@ -21,8 +22,42 @@ const Manage_Printer = () => {
       .catch((error) => {
         console.error("Error fetching printers:", error);
       });
+
+      // Fetch allowed extensions from the backend
+    axios
+    .get("http://127.0.0.1:5000/api/allowed-extensions")
+    .then((response) => {
+      setSelectedExtensions(response.data.allowed_extensions);
+      console.log("Selected extensions:", response.data.allowed_extensions);
+    })
+    .catch((error) => {
+      console.error("Error fetching allowed extensions:", error);
+    });
   }, []);
 
+
+  const saveExtensions = (extension, status) => {
+    setSelectedExtensions((prev) => 
+      prev.map((ext) =>
+        ext.Extension === extension ? { ...ext, Status: status } : ext
+      )
+    );
+  };
+
+  useEffect(() => {
+    // Only send the request if the extensions have changed
+    if (selectedExtensions.length > 0) {
+      axios
+        .put("http://127.0.0.1:5000/api/allowed-extensions", selectedExtensions)
+        .then((response) => {
+          console.log("Extensions updated");
+        })
+        .catch((error) => {
+          console.error("Error updating extensions:", error);
+        });
+    }
+  }, [selectedExtensions]); // Trigger this effect when selectedExtensions changes
+  
   const togglePrinterStatus = (id, currentStatus) => {
     const updatedStatus = currentStatus === "Available" ? "Unavailable" : "Available";
 
@@ -65,7 +100,6 @@ const Manage_Printer = () => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           width: "100%",
-          height: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -113,6 +147,20 @@ const Manage_Printer = () => {
                 checked={printer.status === "Available"}
                 onChange={() => togglePrinterStatus(printer.id, printer.status)}
               />
+            </div>
+          ))}
+        </div>
+        <div className="ext-container">
+          <h2>Select Allowed File Extensions:</h2>
+          {selectedExtensions.map((extension) => (
+            <div className="printer-card-sm" key={extension.Extension}>
+                <input
+                  type="checkbox"
+                  value={extension.Extension}
+                  checked={extension.Status === "Allow"}
+                  onChange={(e) => saveExtensions(extension.Extension, e.target.checked ? "Allow" : "Not Allow")}
+                />
+                {extension.Extension}
             </div>
           ))}
         </div>

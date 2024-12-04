@@ -4,6 +4,15 @@
     min-height: 100vh; /* Full view height */
 }
 
+.preview-container {
+    width: 400px;
+    height: 400px; /* You can adjust the height as needed */
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    overflow: hidden; /* This ensures the image does not overflow out of the container */
+}
+
 .background_Configurations {
     position: relative;
     flex-grow: 1; /* Take up all available space */

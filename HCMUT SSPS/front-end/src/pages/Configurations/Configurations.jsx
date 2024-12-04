@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg"; // Path to the SVG
@@ -8,6 +8,8 @@ import { ButtonGroup, Navigation } from "primitives";
 import { Button } from "primitives";
 import { InputField } from "primitives";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import mammoth from 'mammoth';
 
 const record = {
     Name: "Nguyen Van Teo",
@@ -30,6 +32,34 @@ function NavigationButtons(){
 }
 
 function Configurations() {
+    const [preview, setPreview] = useState(null);
+    useEffect(() => {
+        // Fetch the file preview from the backend
+        axios
+            .get("http://127.0.0.1:5000/api/get-file", { responseType: "blob" }) // Adjust the endpoint as needed
+            .then((response) => {
+                const file = response.data;
+                const fileType = response.headers["content-type"];
+                const fileUrl = URL.createObjectURL(file);
+                console.log(file, fileType, fileUrl);
+    
+                // Check the content type to determine how to handle the preview
+                if (fileType.startsWith("image/")) {
+                    // For image previews (e.g., PNG for the first page of a PDF or DOCX)
+                    setPreview(<img src={fileUrl} alt="Preview" style={{ width: "100%", height: "100%", objectFit: "contain" }} />);
+                } else if (fileType === "application/pdf") {
+                    // If the backend still returns PDFs for some reason (not expected here)
+                    setPreview(<iframe src={fileUrl} style={{ width: "100%", height: "400px" }} title="PDF Preview" />);
+                } else {
+                    alert("Unsupported file type.");
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching file:", error);
+            });
+    }, []);
+    
+
     return (
         <div>
             <Navbar property="Registered User"/>
@@ -74,7 +104,7 @@ function Configurations() {
                             <div className="line_Configurations">Mã số sinh viên: <span style={{marginLeft:"10px"}}>{record.ID}</span></div>
                             <div className="line_Configurations">Email: <span style={{marginLeft:"10px"}}>{record.Email}</span></div>
                             <div className="line_Configurations">Khoa: <span style={{marginLeft:"10px"}}>{record.Faculty}</span></div>
-
+                            {preview && <div className="preview-container" style={{ marginTop: "20px" }}>{preview}</div>}
                             <NavigationButtons/>
                         </div>
                     </div>
