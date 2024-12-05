@@ -13,18 +13,17 @@ import mammoth from 'mammoth';
 
 let print_info = JSON.parse(localStorage.getItem('print_info'))
 
-const record = {
-    Name: "Nguyen Van Teo",
-    ID: print_info.MSSV,
-    Email: "TeoVanNg@gmail.com",
-    Faculty: "Computer Science",
-    Code: "MF125241242",
-    Area: "A4 - 402",
-    Time: "32 - 11 - 2024"
-}
-
 function Configurations() {
     const [preview, setPreview] = useState(null);
+    const [record, setRecord] = useState({
+        Name: "Nguyen Van Teo",
+        ID: "2252937",
+        Email: "TeoVanNg@gmail.com",
+        Faculty: "Computer Science",
+        Code: "MF125241242",
+        Area: "A4 - 402",
+        Time: "32 - 11 - 2024"
+    });
     const navigate = useNavigate();
 
     function NavigationButtons(){
@@ -54,6 +53,15 @@ function Configurations() {
     useEffect(() => {
         // Fetch the file preview from the backend
         print_info = JSON.parse(localStorage.getItem('print_info'))
+        setRecord({
+            Name: "Nguyen Van Teo",
+            ID: print_info?.MSSV || "",
+            Email: "TeoVanNg@gmail.com",
+            Faculty: "Computer Science",
+            Code: "MF125241242",
+            Area: "A4 - 402",
+            Time: print_info?.date || "",
+        })
         axios
             .get("http://127.0.0.1:5000/api/get-file", { responseType: "blob" }) // Adjust the endpoint as needed
             .then((response) => {

@@ -90,7 +90,7 @@ def get_file():
 
         if file_extension == 'pdf':
             # For PDF: convert the first page to an image
-            images = convert_from_path(first_file_path, first_page=1, last_page=1, poppler_path="E:/HCMUT-year 3 project/HCMUT-SPSS-SE241/HCMUT SSPS/backend/Release-24.08.0-0/poppler-24.08.0/Library/bin")  # Convert first page
+            images = convert_from_path(first_file_path, first_page=1, last_page=1, poppler_path="./Release-24.08.0-0/poppler-24.08.0/Library/bin")  # Convert first page
             image = images[0]
 
             # Save the image to a BytesIO buffer
@@ -131,17 +131,17 @@ def upload_file():
 
 @app.route('/api/delete-uploads', methods=['DELETE'])
 def delete_uploads():
-    try:
+    # try:
         # Check if the directory exists
         if os.path.exists(UPLOAD_FOLDER):
             # Remove the directory and all its contents
             shutil.rmtree(UPLOAD_FOLDER)
             return jsonify({"message": "Uploads directory deleted successfully"}), 200
         else:
-            abort(404, "Uploads directory not found.")
+            return jsonify({"error": "Uploads directory not found"}), 200
     
-    except Exception as e:
-        abort(500, f"Error deleting uploads directory: {str(e)}")
+    # except Exception as e:
+    #     abort(500, f"Error deleting uploads directory: {str(e)}")
 # Endpoint to get the allowed extensions
 @app.route('/api/allowed-extensions', methods=['GET'])
 def get_allowed_extensions():
