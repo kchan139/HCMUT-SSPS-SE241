@@ -1,63 +1,113 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
 import { IconFilePlus } from "icons";
 import { Button } from "primitives";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Import axios
 import "./home.css";
 
-function NavigationButtons() {
-    const navigate = useNavigate();
-    return (
-        <Button onClick={() => navigate("/ChoosePrinter")} variant="primary">
-            <IconFilePlus />
-            Chọn tệp từ thiết bị
-        </Button>
-    );
-}
-
 function Home() {
-    // State to hold the selected file
+    // State to hold the selected file and allowed extensions
+    const navigate = useNavigate();
     const [file, setFile] = useState(null);
+    const [allowedExtensions, setAllowedExtensions] = useState([]);
+    const [acceptExtensions, setAcceptExtensions] = useState(""); // State for dynamic accept value
 
-    // Handle file selection
+    const NavigationButtons = () => {
+        const navigate = useNavigate();
+        return (
+            <Button onClick={handleUpload} variant="primary">
+                <IconFilePlus />
+                Chọn tệp từ thiết bị
+            </Button>
+        );
+    }
+
+    // Fetch allowed extensions from the backend on component mount
+    useEffect(() => {
+        const fetchAllowedExtensions = async () => {
+            try {
+                const response = await axios.get("http://127.0.0.1:5000/api/allowed-extensions");
+                setAllowedExtensions(response.data.allowed_extensions);
+
+                // Generate the accept attribute based on allowed extensions
+                const extensions = response.data.allowed_extensions
+                    .filter(ext => ext.Status === "Allow")
+                    .map(ext => `.${ext.Extension}`)
+                    .join(",");
+                setAcceptExtensions(extensions); // Set the dynamic accept value
+            } catch (error) {
+                console.error("Error fetching allowed extensions:", error);
+                alert("Error fetching allowed extensions.");
+            }
+        };
+
+        fetchAllowedExtensions();
+    }, []);
+
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0]; // Get the first file selected
-        if (selectedFile && selectedFile.type === "application/pdf") {
+        const fileExtension = selectedFile?.name.split(".").pop()?.toLowerCase();
+    
+        // Validate if the file extension is allowed
+        if (selectedFile && allowedExtensions.some(ext => ext.Extension === fileExtension && ext.Status === "Allow")) {
             setFile(selectedFile);  // Store the file in state
         } else {
-            alert("Please select a valid PDF file.");
+            alert("Please select a valid file with one of the allowed extensions.");
+            // Reset the input field by clearing the file input
+            event.target.value = "";
+            // Optionally, reset the file state to null (or set it to an empty string)
+            setFile(null); 
         }
     };
 
-    // Handle file upload
-    const handleUpload = async () => {
+    const handleUpload = () => {
         if (!file) {
             alert("Please select a file first.");
             return;
         }
-
-        const formData = new FormData();
-        formData.append("file", file);
-
-        try {
-            // Send the file to the backend (change URL as per your backend endpoint)
-            const response = await fetch("http://localhost:5000/upload", {
-                method: "POST",
-                body: formData,
+    
+        // First, delete the uploads directory
+        axios
+            .delete("http://127.0.0.1:5000/api/delete-uploads")
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log("Uploads directory deleted successfully.");
+    
+                    // Now proceed with the file upload
+                    const formData = new FormData();
+                    formData.append("file", file); // Add the selected file to form data
+    
+                    axios
+                        .post("http://127.0.0.1:5000/upload", formData, {
+                            headers: {
+                                "Content-Type": "multipart/form-data",
+                            },
+                        })
+                        .then((uploadResponse) => {
+                            if (uploadResponse.status === 200) {
+                                alert("File uploaded successfully!");
+                                navigate("/ChoosePrinter");
+                            } else {
+                                alert("File upload failed.");
+                            }
+                        })
+                        .catch((uploadError) => {
+                            console.error("Error uploading file:", uploadError);
+                            alert("Error uploading file.");
+                        });
+                } else {
+                    alert("Failed to delete uploads directory.");
+                }
+            })
+            .catch((deleteError) => {
+                console.error("Error deleting uploads directory:", deleteError);
+                alert("Error deleting uploads directory.");
             });
-
-            if (response.ok) {
-                alert("File uploaded successfully!");
-            } else {
-                alert("File upload failed.");
-            }
-        } catch (error) {
-            console.error("Error uploading file:", error);
-            alert("Error uploading file.");
-        }
     };
+    
 
     return (
         <div>
@@ -73,11 +123,14 @@ function Home() {
                     <div className="home-frame-wrapper">
                         <div className="button-div">
                             <p className="text-wrapper-2">
-                                Hoặc kéo thả tệp của bạn vào đây
+                                Allow file extensions: {acceptExtensions}
                             </p>
-                            <button onClick={handleUpload} className="upload-button">
-                                Tải lên
-                            </button>
+                            <input
+                                type="file"
+                                onChange={handleFileChange}
+                                className="file-input"
+                                accept={acceptExtensions}
+                            />
 
                             <NavigationButtons />
                         </div>
