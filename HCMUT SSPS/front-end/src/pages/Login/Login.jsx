@@ -4,8 +4,9 @@ import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
 import { IconFilePlus } from "icons"
 import { Button } from "primitives"
-import "./login.css";
 import { useNavigate } from "react-router-dom";
+import "./login.css";
+import "../../global.css";
 
 function Home() {
     const navigate = useNavigate();
@@ -16,9 +17,10 @@ function Home() {
         const navigate = useNavigate();
         return(
             <Button onPress={ValidateUser}
-                    variant="primary"
+                    variant="secondary"
                     state="default"
                     size="medium"
+                    className="button-login"
             >Đăng nhập
             </Button>
         )
@@ -62,7 +64,7 @@ function Home() {
                         <form className="login-form">
                             {/* Caption */}
                             <p className="form-caption">
-                                <Button className="navbar-button" onPress={() => navigate("/AdminLogin")}>
+                                <Button variant="subtle" className="navbar-button" onPress={() => navigate("/AdminLogin")}>
                                 Bạn là quản trị viên? <u>Đăng nhập dưới quyền quản trị để tiếp tục.</u>
                                 </Button>
                             </p>
@@ -97,7 +99,7 @@ function Home() {
                                 </div>
 
                                 {/* Remember Me Checkbox */}
-                                <div className="form-group">
+                                <div className="form-group-checkbox">
                                     <input
                                         id="remember-me"
                                         type="checkbox"

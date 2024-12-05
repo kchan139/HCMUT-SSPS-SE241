@@ -17,9 +17,10 @@ function AdminLogin() {
         const navigate = useNavigate();
         return(
             <Button onPress={ValidateUser}
-                    variant="primary"
+                    variant="secondary"
                     state="default"
                     size="medium"
+                    className="button-login"
             >Đăng nhập
             </Button>
         )
@@ -89,7 +90,7 @@ function AdminLogin() {
                                 </div>
 
                                 {/* Remember Me Checkbox */}
-                                <div className="form-group_AdminLogin">
+                                <div className="form-group-checkbox_AdminLogin">
                                     <input
                                         id="remember-me"
                                         type="checkbox"

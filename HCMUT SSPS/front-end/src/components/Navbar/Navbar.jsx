@@ -19,29 +19,29 @@ export const Navbar = ({ property }) => {
                     {/* Buttons based on property */}
                     {property === "Admin" && (
                         <>
-                            <Button className="navbar-button" onPress={() => alert("/Admin_history")}>
+                            <Button variant="secondary" className="navbar-button" onPress={() => alert("/Admin_history")}>
                                 Trang chủ
                             </Button>
-                            <Button className="navbar-button" onPress={() => navigate("/Admin_history")}>
+                            <Button variant="secondary" className="navbar-button" onPress={() => navigate("/Admin_history")}>
                                 Lịch sử
                             </Button>
-                            <Button className="navbar-button" onPress={() => alert("No functions yet")}>
+                            <Button variant="secondary" className="navbar-button" onPress={() => alert("No functions yet")}>
                                 Thống kê
                             </Button>
-                            <Button className="navbar-button" onPress={() => navigate("/Manage_Printer")}>
+                            <Button variant="secondary" className="navbar-button" onPress={() => navigate("/Manage_Printer")}>
                                 Quản lý
                             </Button>
                         </>
                     )}
                     {property === "Registered User" && (
                         <>
-                            <Button className="navbar-button" onPress={() => navigate("/Home")}>
+                            <Button variant="secondary" className="navbar-button" onPress={() => navigate("/Home")}>
                                 Trang chủ
                             </Button>
-                            <Button className="navbar-button" onPress={() => navigate("/UserLog")}>
+                            <Button variant="secondary" className="navbar-button" onPress={() => navigate("/UserLog")}>
                                 Lịch sử
                             </Button>
-                            <Button className="navbar-button" onPress={() => navigate("/Buy_Page")}>
+                            <Button variant="secondary" className="navbar-button" onPress={() => navigate("/Buy_Page")}>
                                 Mua trang in
                             </Button>
                         </>
@@ -51,11 +51,11 @@ export const Navbar = ({ property }) => {
                 {/* Additional Links */}
                 <div className="links">
                     {property === "Guest" ? (
-                        <Button className="navbar-button" onPress={() => alert("Đăng nhập clicked!")}>
+                        <Button variant="secondary" className="navbar-button" onPress={() => alert("Đăng nhập clicked!")}>
                             Đăng nhập
                         </Button>
                     ) : (
-                        <Button className="navbar-button" onPress={() => navigate("/")}>
+                        <Button variant="secondary" className="navbar-button" onPress={() => navigate("/")}>
                             Đăng xuất
                         </Button>
                     )}

@@ -39,7 +39,14 @@
     margin-bottom: 16px;
 }
 
+.form-group-checkbox {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
 .form-label {
+    color: black !important;
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -66,7 +73,7 @@
 
 .form-checkbox-label {
     font-size: 14px;
-    color: #999;
+    color: #111;
 }
 
 .form-button {
