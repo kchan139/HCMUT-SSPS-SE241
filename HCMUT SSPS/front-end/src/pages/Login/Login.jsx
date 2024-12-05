@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
@@ -7,20 +7,50 @@ import { Button } from "primitives"
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 
-function NavigationButtons(){
-    const navigate = useNavigate();
-    return(
-        <Button onPress={() => navigate("/Home")}
-                variant="primary"
-                state="default"
-                size="medium"
-        >Đăng nhập
-        </Button>
-    )
-}
-
 function Home() {
     const navigate = useNavigate();
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+    function NavigationButtons(){
+        const navigate = useNavigate();
+        return(
+            <Button onPress={ValidateUser}
+                    variant="primary"
+                    state="default"
+                    size="medium"
+            >Đăng nhập
+            </Button>
+        )
+    }
+
+    const ValidateUser = () => {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0]; // Get YYYY-MM-DD format
+        const print_info = {
+            MSSV: "",
+            printer: "",
+            date: formattedDate,
+            status: "Pending"
+        };
+
+        if (username === '2252938' && password === '123') {
+            print_info.MSSV = "2252938"
+            localStorage.setItem('print_info', JSON.stringify(print_info));
+            console.log('Record set in localStorage:', print_info);
+            navigate('/Home')
+        }
+        else if (username === '2252939' && password === '123') {
+            print_info.MSSV = "2252939"
+            localStorage.setItem('print_info', JSON.stringify(print_info));
+            console.log('Record set in localStorage:', print_info);
+            navigate('/Home')
+        }
+        else {
+            localStorage.removeItem('print_info');
+            alert('Sai tên đăng nhập hoặc mật khẩu')
+        }
+    } 
     
     return (
         <div>
@@ -47,6 +77,8 @@ function Home() {
                                         id="username"
                                         type="text"
                                         className="form-input"
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
                                     />
                                 </div>
 
@@ -59,6 +91,8 @@ function Home() {
                                         id="password"
                                         type="password"
                                         className="form-input"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
 

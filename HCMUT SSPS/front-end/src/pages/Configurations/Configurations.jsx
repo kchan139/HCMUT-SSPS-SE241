@@ -11,9 +11,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import mammoth from 'mammoth';
 
+let print_info = JSON.parse(localStorage.getItem('print_info'))
+
 const record = {
     Name: "Nguyen Van Teo",
-    ID: "2252623",
+    ID: print_info.MSSV,
     Email: "TeoVanNg@gmail.com",
     Faculty: "Computer Science",
     Code: "MF125241242",
@@ -21,20 +23,37 @@ const record = {
     Time: "32 - 11 - 2024"
 }
 
-function NavigationButtons(){
-    const navigate = useNavigate();
-    return(
-        <ButtonGroup style={{marginLeft: "90px", marginTop: "30px"}}>
-            <Button onPress={() => navigate("/ChoosePrinter")} variant="subtle">Quay lại</Button>
-            <Button onPress={() => navigate("/PrintingComplete")} variant="primary">Tiếp tục</Button>
-        </ButtonGroup>
-    )
-}
-
 function Configurations() {
     const [preview, setPreview] = useState(null);
+    const navigate = useNavigate();
+
+    function NavigationButtons(){
+        return(
+            <ButtonGroup style={{marginLeft: "90px", marginTop: "30px"}}>
+                <Button onPress={() => navigate("/ChoosePrinter")} variant="subtle">Quay lại</Button>
+                <Button onPress={addRecord} variant="primary">Tiếp tục</Button>
+            </ButtonGroup>
+        )
+    }
+
+    const addRecord = () => {
+        console.log(print_info.MSSV)
+        axios
+            .put(`http://127.0.0.1:5000/api/records/${print_info.MSSV}`, print_info)
+            .then((response) => {
+                console.log(response.data);
+                alert('Record added successfully!');
+                navigate("/PrintingComplete")
+            })
+            .catch((error) => {
+                console.error('Error adding record:', error);
+                alert('Failed to add record.');
+            });
+    };
+
     useEffect(() => {
         // Fetch the file preview from the backend
+        print_info = JSON.parse(localStorage.getItem('print_info'))
         axios
             .get("http://127.0.0.1:5000/api/get-file", { responseType: "blob" }) // Adjust the endpoint as needed
             .then((response) => {

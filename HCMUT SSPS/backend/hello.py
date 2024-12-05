@@ -24,8 +24,57 @@ allowed_extensions = [
     {"Extension": "pdf", "Status": "Allow"},
     {"Extension": "jpg", "Status": "Allow"},
     {"Extension": "png", "Status": "Allow"},
-]   
+] 
 
+records_2252938 = [
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "status": "Completed" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "status": "Pending" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "status": "Completed" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "status": "Pending" },
+]
+
+records_2252939 = [
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "status": "Completed" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "status": "Pending" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "status": "Completed" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "status": "Pending" },
+]
+
+@app.route('/api/records/<mssv>', methods=['PUT'])
+def update_records(mssv):
+    data = request.json
+    print(mssv)
+
+    if not data or not isinstance(data, dict):
+        abort(400, description="Invalid data. Please provide a valid JSON object.")
+
+    # Ensure MSSV matches in the provided record
+    if data.get('MSSV') != mssv:
+        abort(400, description="MSSV in the record does not match the provided MSSV.")
+
+    # Add the record to the appropriate list
+    if mssv == "2252938":
+        records_2252938.append(data)
+        return jsonify({"message": "Record added successfully", "records": records_2252938})
+    elif mssv == "2252939":
+        records_2252939.append(data)
+        return jsonify({"message": "Record added successfully", "records": records_2252939})
+    else:
+        abort(404, description="Records not found for the given MSSV.")
+
+@app.route('/api/records/<mssv>', methods=['GET'])
+def get_records(mssv):
+    # Check the provided MSSV value and return the corresponding records
+    if mssv == "2252938":
+        return jsonify(records_2252938)
+    elif mssv == "2252939":
+        return jsonify(records_2252939)
+    elif mssv == "7777":
+        # Merge the records of 2252938 and 2252939
+        merged_records = records_2252938 + records_2252939
+        return jsonify(merged_records)
+    else:
+        abort(404, description="Records not found for the given MSSV")
 @app.route('/api/get-file', methods=['GET'])
 def get_file():
     try:

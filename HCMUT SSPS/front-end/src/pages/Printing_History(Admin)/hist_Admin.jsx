@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import {
@@ -15,19 +16,22 @@ import { IconSearch } from "icons";
 import { Button } from "primitives";
 import { IconChevronDown, IconCopy, IconTrash2, IconEdit2 } from "icons";
 
-//Backend update data with format like records. The number of records per page can be edited by the variable recordsPerPage in line 30
-
-const records = [
-  { MSSV: "2252938", printer: "Printer A", date: "2024-11-20", status: "Completed" },
-  { MSSV: "2252939", printer: "Printer B", date: "2024-11-19", status: "Pending" },
-  { MSSV: "2252940", printer: "Printer C", date: "2024-11-18", status: "Completed" },
-  { MSSV: "2252941", printer: "Printer D", date: "2024-11-17", status: "Pending" },
-  // Add more records as needed
-];
-
 function Admin_history() {
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 2;
+  const [records, setRecords] = useState([])
+  const print_info = JSON.parse(localStorage.getItem('print_info'))
+  useEffect(() => {
+      axios
+          .get(`http://127.0.0.1:5000/api/records/${print_info.MSSV}`)
+          .then((response) => {
+              setRecords(response.data);
+          })
+          .catch((error) => {
+              console.error("Error fetching records:", error);
+              setRecords([]); // Clear previous records
+          });
+    }, []);
+  const recordsPerPage = 4;
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
