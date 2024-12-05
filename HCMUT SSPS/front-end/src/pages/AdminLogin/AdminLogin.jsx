@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
@@ -7,19 +7,46 @@ import { Button } from "primitives"
 import "./adminLogin.css";
 import { useNavigate } from "react-router-dom";
 
-function NavigationButtons(){
-    const navigate = useNavigate();
-    return(
-        <Button onPress={() => navigate("/Admin_history")}
-                variant="primary"
-                state="default"
-                size="medium"
-        >Đăng nhập
-        </Button>
-    )
-}
 
 function AdminLogin() {
+    const navigate = useNavigate();
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+    function NavigationButtons(){
+        const navigate = useNavigate();
+        return(
+            <Button onPress={ValidateUser}
+                    variant="primary"
+                    state="default"
+                    size="medium"
+            >Đăng nhập
+            </Button>
+        )
+    }
+
+    const ValidateUser = () => {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0]; // Get YYYY-MM-DD format
+        const print_info = {
+            MSSV: "",
+            printer: "",
+            date: formattedDate,
+            status: "Pending"
+        };
+
+        if (username === '7777' && password === '123') {
+            print_info.MSSV = "7777"
+            localStorage.setItem('print_info', JSON.stringify(print_info));
+            console.log('Record set in localStorage:', print_info);
+            navigate('/Admin_history')
+        }
+        else {
+            localStorage.removeItem('print_info');
+            alert('Sai tên đăng nhập hoặc mật khẩu')
+        }
+    }
+
     return (
         <div>
             <Navbar property="Guest" />
@@ -40,6 +67,9 @@ function AdminLogin() {
                                         id="username"
                                         type="text"
                                         className="form-input_AdminLogin"
+                                        style={{color: 'black'}}
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
                                     />
                                 </div>
 
@@ -52,6 +82,9 @@ function AdminLogin() {
                                         id="password"
                                         type="password"
                                         className="form-input_AdminLogin"
+                                        style={{color: 'black'}}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
 

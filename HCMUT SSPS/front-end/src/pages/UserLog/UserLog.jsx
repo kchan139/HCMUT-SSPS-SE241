@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg";
+import axios from "axios";
 import "./userLog.css";
 import {
     Pagination,
@@ -15,15 +16,21 @@ import { IconSearch } from "icons";
 import { Button } from "primitives";
 import { IconChevronDown, IconCopy, IconTrash2, IconEdit2 } from "icons";
 
-const records = [
-    { printer: "Printer A", date: "2024-11-20", status: "Completed" },
-    { printer: "Printer B", date: "2024-11-19", status: "Pending" },
-    { printer: "Printer C", date: "2024-11-18", status: "Completed" },
-    { printer: "Printer D", date: "2024-11-17", status: "Pending" },
-];
-
 function UserLog() {
     const [currentPage, setCurrentPage] = useState(1);
+    const [records, setRecords] = useState([])
+    const print_info = JSON.parse(localStorage.getItem('print_info'))
+    useEffect(() => {
+        axios
+            .get(`http://127.0.0.1:5000/api/records/${print_info.MSSV}`)
+            .then((response) => {
+                setRecords(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching records:", error);
+                setRecords([]); // Clear previous records
+            });
+      }, []);
     const recordsPerPage = 2;
 
     const indexOfLastRecord = currentPage * recordsPerPage;
