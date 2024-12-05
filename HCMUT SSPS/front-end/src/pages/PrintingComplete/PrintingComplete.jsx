@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import BackgroundSVG from "../../assets/background.svg"; // Path to the SVG
@@ -6,16 +6,6 @@ import "./printingComplete.css"
 import { ButtonGroup } from "primitives"
 import { Button } from "primitives"
 import { useNavigate } from "react-router-dom";
-
-const record = {
-    Name: "Nguyen Van Teo",
-    ID: "2252623",
-    Email: "TeoVanNg@gmail.com",
-    Faculty: "Computer Science",
-    Code: "MF125241242",
-    Area: "A4 - 402",
-    Time: "32 - 11 - 2024"
-}
 
 function NavigationButtons(){
     const navigate = useNavigate();
@@ -27,6 +17,29 @@ function NavigationButtons(){
 }
 
 function PrintingComplete(){
+    const [record, setRecord] = useState({
+        Name: "Nguyen Van Teo",
+        ID: "2252937",
+        Email: "TeoVanNg@gmail.com",
+        Faculty: "Computer Science",
+        Code: "MF125241242",
+        Area: "A4 - 402",
+        Time: "32 - 11 - 2024"
+    });
+    useEffect(() => {
+        // Fetch the file preview from the backend
+        const print_info = JSON.parse(localStorage.getItem('print_info'))
+        setRecord({
+            Name: "Nguyen Van Teo",
+            ID: print_info?.MSSV || "",
+            Email: "TeoVanNg@gmail.com",
+            Faculty: "Computer Science",
+            Code: "MF125241242",
+            Area: "A4 - 402",
+            Time: print_info?.date || "",
+        })
+    }, [])
+    
     return(
         <div>
             <Navbar property="Registered User"/>

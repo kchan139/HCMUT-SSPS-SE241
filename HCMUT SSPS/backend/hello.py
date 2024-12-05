@@ -131,17 +131,17 @@ def upload_file():
 
 @app.route('/api/delete-uploads', methods=['DELETE'])
 def delete_uploads():
-    try:
+    # try:
         # Check if the directory exists
         if os.path.exists(UPLOAD_FOLDER):
             # Remove the directory and all its contents
             shutil.rmtree(UPLOAD_FOLDER)
             return jsonify({"message": "Uploads directory deleted successfully"}), 200
         else:
-            abort(404, "Uploads directory not found.")
+            return jsonify({"error": "Uploads directory not found"}), 200
     
-    except Exception as e:
-        abort(500, f"Error deleting uploads directory: {str(e)}")
+    # except Exception as e:
+    #     abort(500, f"Error deleting uploads directory: {str(e)}")
 # Endpoint to get the allowed extensions
 @app.route('/api/allowed-extensions', methods=['GET'])
 def get_allowed_extensions():
