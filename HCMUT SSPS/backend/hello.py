@@ -90,7 +90,7 @@ def get_file():
 
         if file_extension == 'pdf':
             # For PDF: convert the first page to an image
-            images = convert_from_path(first_file_path, first_page=1, last_page=1, poppler_path="E:/HCMUT-year 3 project/HCMUT-SPSS-SE241/HCMUT SSPS/backend/Release-24.08.0-0/poppler-24.08.0/Library/bin")  # Convert first page
+            images = convert_from_path(first_file_path, first_page=1, last_page=1, poppler_path="./Release-24.08.0-0/poppler-24.08.0/Library/bin")  # Convert first page
             image = images[0]
 
             # Save the image to a BytesIO buffer
