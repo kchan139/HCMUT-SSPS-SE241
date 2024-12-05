@@ -64,7 +64,7 @@ function Home() {
                         <form className="login-form">
                             {/* Caption */}
                             <p className="form-caption">
-                                <Button variant="subtle" className="navbar-button" onPress={() => navigate("/AdminLogin")}>
+                                <Button variant="subtle" className="change-user-button" onPress={() => navigate("/AdminLogin")}>
                                 Bạn là quản trị viên? <u>Đăng nhập dưới quyền quản trị để tiếp tục.</u>
                                 </Button>
                             </p>
