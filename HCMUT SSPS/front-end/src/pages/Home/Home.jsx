@@ -26,8 +26,8 @@ function Home() {
                 // Generate the accept attribute based on allowed extensions
                 const extensions = response.data.allowed_extensions
                     .filter(ext => ext.Status === "Allow")
-                    .map(ext => `.${ext.Extension}`)
-                    .join(",");
+                    .map(ext => `${ext.Extension}`)
+                    .join(", ");
                 setAcceptExtensions(extensions); // Set the dynamic accept value
             } catch (error) {
                 console.error("Error fetching allowed extensions:", error);
@@ -50,7 +50,8 @@ function Home() {
         // Validate if the file extension is allowed
         if (selectedFile && allowedExtensions.some(ext => ext.Extension === fileExtension && ext.Status === "Allow")) {
             setFile(selectedFile);  // Store the file in state
-            navigate("/ChoosePrinter");
+            console.log("File selected:", selectedFile);
+            // navigate("/ChoosePrinter");
         } else {
             alert("Please select a valid file with one of the allowed extensions.");
             // Reset the input field by clearing the file input
@@ -59,12 +60,21 @@ function Home() {
             setFile(null); 
         }
     };
+    // Upload the file when the file state changes
+    useEffect(() => {
+        if (file) {
+            handleUpload();
+        }
+    }, [file]); // This hook runs whenever `file` changes
 
     const handleUpload = () => {
         if (!file) {
+            console.log("No file selected.");
             alert("Please select a file first.");
             return;
         }
+    
+        console.log("File to upload:", file);
     
         // First, delete the uploads directory
         axios
@@ -120,7 +130,7 @@ function Home() {
                     <div className="home-frame-wrapper">
                         <div className="button-div">
                             <p className="text-wrapper-2">
-                                Allow file extensions: {acceptExtensions}
+                                Dạng tệp cho phép: {acceptExtensions}
                             </p>
                             <input
                                 type="file"
