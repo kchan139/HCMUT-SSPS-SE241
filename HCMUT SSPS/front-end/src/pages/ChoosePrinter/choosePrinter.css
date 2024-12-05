@@ -51,6 +51,9 @@
 }
 
 .bar_choosePrinter {
+    display: flex; /* Make the container a flexbox */
+    align-items: center; /* Vertically center the items */
+    gap: 10px;
     width: 800px;
     height: 60px;
     flex-shrink: 0;
@@ -68,7 +71,6 @@
 }
 
 .printerIcon_choosePrinter {
-    margin-top: 10px;
     margin-left: 30px;
     margin-right: 20px;
 }

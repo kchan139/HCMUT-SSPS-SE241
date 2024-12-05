@@ -18,8 +18,8 @@ function ChoosePrinter(){
     function NavigationButtons(){
         return(
             <ButtonGroup align="justify">
-                <Button onPress={() => navigate("/Home")} variant="subtle">Quay lại</Button>
-                <Button onPress={setPrinter} variant="primary">Tiếp tục</Button>
+                <Button onPress={() => navigate("/Home")} variant="primary" className="button-back">Quay lại</Button>
+                <Button onPress={setPrinter} variant="secondary" className="button-next">Tiếp tục</Button>
             </ButtonGroup>
         )
     }
