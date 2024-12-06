@@ -16,6 +16,12 @@
     z-index: -1;
 }
 
+.icon-file-plus {
+    color: black; /* Ensure the icon color contrasts with the background */
+    font-size: 24px; /* Set a reasonable size for the icon */
+    z-index: 10; /* Ensure the icon is above other elements */
+}
+
 .home-frame {
     display: flex;
     width: 80%;

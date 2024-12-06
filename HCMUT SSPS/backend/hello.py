@@ -22,8 +22,8 @@ printers = [
 
 allowed_extensions = [
     {"Extension": "pdf", "Status": "Allow"},
-    {"Extension": "jpg", "Status": "Allow"},
-    {"Extension": "png", "Status": "Allow"},
+    {"Extension": "docx", "Status": "Allow"},
+    {"Extension": "pptx", "Status": "Allow"},
 ] 
 
 records_2252938 = [

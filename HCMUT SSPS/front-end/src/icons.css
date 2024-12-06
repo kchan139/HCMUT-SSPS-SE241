@@ -1,6 +1,6 @@
 .icon {
   --icon-color: var(--sds-color-icon-brand-default);
-  --svg-stroke-color: var(--icon-color);
+  --svg-stroke-color: black;
   --svg-fill-color: var(--icon-color);
   height: var(--icon-diameter);
   width: var(--icon-diameter);

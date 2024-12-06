@@ -28,9 +28,9 @@ function Configurations() {
 
     function NavigationButtons(){
         return(
-            <ButtonGroup style={{marginLeft: "90px", marginTop: "30px"}}>
-                <Button onPress={() => navigate("/ChoosePrinter")} variant="subtle">Quay lại</Button>
-                <Button onPress={addRecord} variant="primary">Tiếp tục</Button>
+            <ButtonGroup className="button-group-configurations" style={{marginLeft: "90px", marginTop: "30px"}}>
+                <Button className="button-back" onPress={() => navigate("/ChoosePrinter")} variant="subtle">Quay lại</Button>
+                <Button className="button-next" onPress={addRecord} variant="primary">Tiếp tục</Button>
             </ButtonGroup>
         )
     }
@@ -126,13 +126,16 @@ function Configurations() {
                                 <span class="input-group-text">%</span>    
                             </div><br />
 
-                            <div className="line_Configurations" style={{fontSize: "20px", marginTop: "10px", marginBottom: "10px"}}><b>Thông tin sinh viên</b></div>
+                            {/* <div className="line_Configurations" style={{fontSize: "20px", marginTop: "10px", marginBottom: "10px"}}><b>Thông tin sinh viên</b></div>
                             <div className="line_Configurations">Họ và tên: <span style={{marginLeft:"10px"}}>{record.Name}</span></div>
                             <div className="line_Configurations">Mã số sinh viên: <span style={{marginLeft:"10px"}}>{record.ID}</span></div>
                             <div className="line_Configurations">Email: <span style={{marginLeft:"10px"}}>{record.Email}</span></div>
-                            <div className="line_Configurations">Khoa: <span style={{marginLeft:"10px"}}>{record.Faculty}</span></div>
+                            <div className="line_Configurations">Khoa: <span style={{marginLeft:"10px"}}>{record.Faculty}</span></div> */}
                             {preview && <div className="preview-container" style={{ marginTop: "20px" }}>{preview}</div>}
                             <NavigationButtons/>
+                        </div>
+                        <div className="preview-container">
+                            {preview || <div className="placeholder">File Preview</div>}
                         </div>
                     </div>
                 }

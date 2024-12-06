@@ -39,6 +39,12 @@
     margin-bottom: 16px;
 }
 
+.form-group-checkbox_AdminLogin {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
 .form-label_AdminLogin {
     display: block;
     font-size: 14px;

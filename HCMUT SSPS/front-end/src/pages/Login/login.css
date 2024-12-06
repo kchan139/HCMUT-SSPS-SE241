@@ -16,6 +16,31 @@
     align-items: center;
 }
 
+.change-user-button {
+    font-family: Inter, sans-serif; /* Match your Figma font */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #FFF; /* Adjust per design */
+    background: none; /* Ensures no background is visible */
+    border: none; /* Removes the border */
+    padding: 0; /* Removes extra space caused by padding */
+    cursor: pointer;
+    transition: color 0.2s ease;
+    outline: none; /* Removes focus outline if it appears */
+}
+
+.change-user-button:hover {
+    color: #AAA; /* Add hover color if needed */
+
+    /* Body 2 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+}
+
 .left-pane {
     /* display: flex;
     flex-direction: column; */
@@ -39,7 +64,14 @@
     margin-bottom: 16px;
 }
 
+.form-group-checkbox {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
 .form-label {
+    color: #FFF !important;
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -66,7 +98,7 @@
 
 .form-checkbox-label {
     font-size: 14px;
-    color: #999;
+    color: #111;
 }
 
 .form-button {
