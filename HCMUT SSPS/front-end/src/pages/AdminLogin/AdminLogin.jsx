@@ -36,16 +36,16 @@ function AdminLogin() {
             status: "Pending"
         };
 
-        if (username === '7777' && password === '123') {
-            print_info.MSSV = "7777"
+        // if (username === '7777' && password === '123') {
+        //     print_info.MSSV = "7777"
             localStorage.setItem('print_info', JSON.stringify(print_info));
             console.log('Record set in localStorage:', print_info);
             navigate('/Admin_history')
-        }
-        else {
-            localStorage.removeItem('print_info');
-            alert('Sai tên đăng nhập hoặc mật khẩu')
-        }
+        // }
+        // else {
+        //     localStorage.removeItem('print_info');
+        //     alert('Sai tên đăng nhập hoặc mật khẩu')
+        // }
     }
 
     return (

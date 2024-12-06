@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 function NavigationButtons(){
     const navigate = useNavigate();
     return(
-        <ButtonGroup style={{position: "absolute", bottom: "12%", left: "10%"}}>
+        <ButtonGroup style={{position: "absolute", bottom: "15%", left: "10%"}}>
             <Button className="button-login" onPress={() => navigate("/Home")}>Trở về trang chủ</Button>
         </ButtonGroup>
     )

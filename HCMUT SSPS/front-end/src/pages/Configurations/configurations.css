@@ -1,18 +1,8 @@
-.configurations {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Full view height */
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-}
-
 .preview-container {
     width: 300px;
     height: 400px; /* You can adjust the height as needed */
     position: absolute;
-    top: 130px;
+    top: 155px;
     right: 140px;
     overflow: hidden; /* This ensures the image does not overflow out of the container */
     background-color: #333;
@@ -51,7 +41,7 @@
 
 .border_Configurations {
     width: 1000px;
-    height: 610px;
+    height: 650px;
     flex-shrink: 0;
     background: #FFF;
 }
@@ -60,7 +50,7 @@
     height: 47px;
     align-self: stretch;
     margin-left: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 75px;
     color: #001C64;
     font-family: Inter;
     font-size: 32px;
