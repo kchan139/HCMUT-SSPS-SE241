@@ -28,9 +28,9 @@ function Configurations() {
 
     function NavigationButtons(){
         return(
-            <ButtonGroup style={{marginLeft: "90px", marginTop: "30px"}}>
-                <Button onPress={() => navigate("/ChoosePrinter")} variant="subtle">Quay lại</Button>
-                <Button onPress={addRecord} variant="primary">Tiếp tục</Button>
+            <ButtonGroup className="button-group-configurations" style={{marginLeft: "90px", marginTop: "30px"}}>
+                <Button className="button-back" onPress={() => navigate("/ChoosePrinter")} variant="subtle">Quay lại</Button>
+                <Button className="button-next" onPress={addRecord} variant="primary">Tiếp tục</Button>
             </ButtonGroup>
         )
     }

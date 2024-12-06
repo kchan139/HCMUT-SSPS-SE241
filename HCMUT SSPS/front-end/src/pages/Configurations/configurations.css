@@ -58,7 +58,10 @@
     line-height: 100px;
 }
 
+/* configurations.css */
 .line_Configurations {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center the items */
     margin-left: 100px;
     margin-top: 10px;
     line-height: 90px;
@@ -71,9 +74,17 @@
 }
 
 .box_Configurations {
+    width: 100px; /* Set a consistent width for all boxes */
+    height: 25px;
     border-radius: 5px;
-    border: 2px solid #4e4a4a;
+    border: 1px solid #4e4a4a;
     appearance: auto;
+    margin-left: 20px; /* Add margin to separate from label */
+}
+
+.button-group-configurations {
+    position: absolute;
+    bottom: 80px;
 }
 
 .button-variant-subtle {
