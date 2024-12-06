@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 function NavigationButtons(){
     const navigate = useNavigate();
     return(
-        <ButtonGroup style={{marginTop: "20px"}}>
-            <Button onPress={() => navigate("/Home")} variant="primary">Trở về trang chủ</Button>
+        <ButtonGroup style={{position: "absolute", bottom: "12%", left: "10%"}}>
+            <Button className="button-login" onPress={() => navigate("/Home")}>Trở về trang chủ</Button>
         </ButtonGroup>
     )
 }
@@ -53,7 +53,7 @@ function PrintingComplete(){
                         <div className="border_PrintingComplete">
                             <div className="header_PrintingComplete">Gửi yêu cầu in thành công</div>
                             <div className="line1_PrintingComplete">Tài liệu in của bạn đang được xử lý, cảm ơn vì đã sử dụng dịch vụ</div>
-                            <div className="line2_PrintingComplete" style={{fontSize:"20px"}}><b>Thông tin</b></div>
+                            <div className="line2_PrintingComplete" style={{fontSize:"20px", marginTop: "50px"}}><b>Thông tin</b></div>
                             <div style={{ display: "flex", gap: "200px" }}>
                                 <span>
                                     <div className="line2_PrintingComplete">Họ và tên: <span style={{marginLeft:"10px"}}>{record.Name}</span></div>

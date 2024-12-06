@@ -28,6 +28,7 @@
 .button-back {
     background-color: white; /* Set the background color to black */
     color: black; /* Set the text color to white */
+    border: 0.5px solid black;
 }
 
 .button-back:hover {
