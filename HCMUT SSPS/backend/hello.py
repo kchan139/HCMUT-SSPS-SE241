@@ -29,17 +29,17 @@ allowed_extensions = [
 ] 
 
 records_2252938 = [
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "status": "Completed" },
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "status": "Pending" },
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "status": "Completed" },
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "status": "Pending" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "file_ext": "pdf", "file_name": "test1.pdf", "file_size": "123534", "page_num": "10", "status": "Completed" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "file_ext": "pdf", "file_name": "test2.pdf", "file_size": "234875", "page_num": "9", "status": "Pending" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "file_ext": "pdf", "file_name": "test3.pdf", "file_size": "1938759", "page_num": "5", "status": "Completed" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "file_ext": "pdf", "file_name": "test4.pdf", "file_size": "48759", "page_num": "2", "status": "Pending" },
 ]
 
 records_2252939 = [
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "status": "Completed" },
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "status": "Pending" },
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "status": "Completed" },
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "status": "Pending" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "file_ext": "pdf", "file_name": "test5.pdf", "file_size": "102745", "page_num": "15", "status": "Completed" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "file_ext": "pdf", "file_name": "test6.pdf", "file_size": "947599", "page_num": "18", "status": "Pending" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "file_ext": "pdf", "file_name": "test7.pdf", "file_size": "12993", "page_num": "35", "status": "Completed" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "file_ext": "pdf", "file_name": "test8.pdf", "file_size": "307514", "page_num": "4", "status": "Pending" },
 ]
 
 @app.route('/api/records/<mssv>', methods=['PUT'])
