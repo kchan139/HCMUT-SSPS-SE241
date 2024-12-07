@@ -5,9 +5,11 @@ from pdf2image import convert_from_path
 from PIL import Image
 import io
 import shutil
+from page_count import page_count_bp
 
 app = Flask(__name__)
 CORS(app)
+app.register_blueprint(page_count_bp)
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
