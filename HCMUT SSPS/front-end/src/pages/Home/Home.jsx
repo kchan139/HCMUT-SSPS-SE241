@@ -46,38 +46,11 @@ function Home() {
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0]; // Get the first file selected
         const fileExtension = selectedFile?.name.split(".").pop()?.toLowerCase();
+    
         // Validate if the file extension is allowed
         if (selectedFile && allowedExtensions.some(ext => ext.Extension === fileExtension && ext.Status === "Allow")) {
             setFile(selectedFile);  // Store the file in state
             console.log("File selected:", selectedFile);
-            let print_info = JSON.parse(localStorage.getItem('print_info'));
-            const fileInfo = {
-                file_name: selectedFile?.name,
-                file_ext: selectedFile?.name.split(".").pop()?.toLowerCase(),
-                file_size: selectedFile?.size,
-                page_num: 0,
-            }
-            const formData = new FormData();
-            formData.append("file", selectedFile);
-
-            fetch("http://127.0.0.1:5000/api/pages-count", {
-                method: "POST",
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.page_count) {
-                        console.log(`The document has ${data.page_count} pages.`);
-                        fileInfo.page_num = data.page_count;
-                    } else {
-                        console.log(data.error || "Unable to get page count.");
-                    }
-                    Object.assign(print_info, fileInfo);
-                    localStorage.setItem('print_info', JSON.stringify(print_info));
-                })
-                .catch(error => {
-                    console.error("Error uploading file:", error);
-                }); 
             // navigate("/ChoosePrinter");
         } else {
             alert("Please select a valid file with one of the allowed extensions.");
