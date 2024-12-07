@@ -25,7 +25,7 @@ function Configurations() {
         Time: "32 - 11 - 2024"
     });
     const navigate = useNavigate();
-
+    
     function NavigationButtons(){
         return(
             <ButtonGroup className="button-group-configurations" style={{marginLeft: "90px", marginTop: "30px"}}>
@@ -35,7 +35,12 @@ function Configurations() {
         )
     }
 
+    const pdfpages = print_info.pages
     const addRecord = () => {
+        if (pdfpages > pages) {
+            alert("Số dư trang in không đủ, xin vui lòng mua thêm");
+            return;
+        }
         console.log(print_info.MSSV)
         axios
             .put(`http://127.0.0.1:5000/api/records/${print_info.MSSV}`, print_info)
@@ -86,6 +91,14 @@ function Configurations() {
             });
     }, []);
     
+    const [pages, setPages] = useState(null);
+    useEffect(() => {
+        fetch("http://127.0.0.1:5000/api/pages")
+          .then(response => response.json())
+          .then(data => setPages(data))  
+          .catch(error => console.error("Error fetching data:", error)); 
+    }, []);
+
 
     return (
         <div>
@@ -125,7 +138,10 @@ function Configurations() {
                                 <input className="box_Configurations" type="number" min="1" max="1000" defaultValue={100} style={{marginLeft: "123px"}}/>
                                 <span class="input-group-text">%</span>    
                             </div><br />
-
+                            <div className="line_Configurations">Số trang in: <span style={{marginLeft:"89px"}}>
+                            {pages ? pages : "Loading..."}</span></div><br />
+                            <div className="line_Configurations">Số trang tài liệu: <span style={{marginLeft:"50px"}}>
+                            {pdfpages ? pdfpages : "Loading..."}</span></div><br />
                             {/* <div className="line_Configurations" style={{fontSize: "20px", marginTop: "10px", marginBottom: "10px"}}><b>Thông tin sinh viên</b></div>
                             <div className="line_Configurations">Họ và tên: <span style={{marginLeft:"10px"}}>{record.Name}</span></div>
                             <div className="line_Configurations">Mã số sinh viên: <span style={{marginLeft:"10px"}}>{record.ID}</span></div>

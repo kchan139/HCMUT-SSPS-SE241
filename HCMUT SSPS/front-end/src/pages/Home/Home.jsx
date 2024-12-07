@@ -11,6 +11,7 @@ import "./home.css";
 function Home() {
     // State to hold the selected file and allowed extensions
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
     const [file, setFile] = useState(null);
     const [allowedExtensions, setAllowedExtensions] = useState([]);
     const [acceptExtensions, setAcceptExtensions] = useState(""); // State for dynamic accept value
@@ -50,7 +51,8 @@ function Home() {
         // Validate if the file extension is allowed
         if (selectedFile && allowedExtensions.some(ext => ext.Extension === fileExtension && ext.Status === "Allow")) {
             setFile(selectedFile);  // Store the file in state
-            console.log("File selected:", selectedFile);
+            console.log("File selected:", selectedFile);            
+            
             // navigate("/ChoosePrinter");
         } else {
             alert("Please select a valid file with one of the allowed extensions.");
@@ -60,6 +62,7 @@ function Home() {
             setFile(null); 
         }
     };
+
     // Upload the file when the file state changes
     useEffect(() => {
         if (file) {
