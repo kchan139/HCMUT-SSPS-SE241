@@ -48,8 +48,6 @@ function Home() {
         const fileExtension = selectedFile?.name.split(".").pop()?.toLowerCase();
         // Validate if the file extension is allowed
         if (selectedFile && allowedExtensions.some(ext => ext.Extension === fileExtension && ext.Status === "Allow")) {
-            setFile(selectedFile);  // Store the file in state
-            console.log("File selected:", selectedFile);
             let print_info = JSON.parse(localStorage.getItem('print_info'));
             const fileInfo = {
                 file_name: selectedFile?.name,
@@ -74,6 +72,8 @@ function Home() {
                     }
                     Object.assign(print_info, fileInfo);
                     localStorage.setItem('print_info', JSON.stringify(print_info));
+                    setFile(selectedFile);  // Store the file in state
+                    console.log("File selected:", selectedFile);
                 })
                 .catch(error => {
                     console.error("Error uploading file:", error);
