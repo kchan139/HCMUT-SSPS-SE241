@@ -131,7 +131,7 @@ function Configurations() {
                             <div className="line_Configurations">Mã số sinh viên: <span style={{marginLeft:"10px"}}>{record.ID}</span></div>
                             <div className="line_Configurations">Email: <span style={{marginLeft:"10px"}}>{record.Email}</span></div>
                             <div className="line_Configurations">Khoa: <span style={{marginLeft:"10px"}}>{record.Faculty}</span></div> */}
-                            {preview && <div className="preview-container" style={{ marginTop: "20px" }}>{preview}</div>}
+                            {/* {preview && <div className="preview-container" style={{ marginTop: "20px" }}>{preview}</div>} */}
                             <NavigationButtons/>
                         </div>
                         <div className="preview-container">

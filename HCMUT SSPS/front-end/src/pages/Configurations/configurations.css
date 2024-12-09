@@ -1,9 +1,9 @@
 .preview-container {
-    width: 400px;
-    height: 600px; /* You can adjust the height as needed */
+    width: 300px;
+    height: 400px; /* You can adjust the height as needed */
     position: absolute;
-    top: 125px;
-    right: 100px;
+    top: 155px;
+    right: 140px;
     overflow: hidden; /* This ensures the image does not overflow out of the container */
     background-color: #333;
     color: white;
@@ -20,7 +20,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .background-image_Configurations {
@@ -38,12 +37,11 @@
     justify-content: center;
     padding: 40px 20px;
     z-index: 1; /* Ensure it sits above the background */
-    flex: 0 0 auto; /* Do not grow or shrink */
 }
 
 .border_Configurations {
     width: 1000px;
-    height: 70vh;
+    height: 650px;
     flex-shrink: 0;
     background: #FFF;
 }
