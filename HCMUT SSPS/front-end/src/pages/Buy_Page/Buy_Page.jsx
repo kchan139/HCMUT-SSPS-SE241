@@ -47,7 +47,7 @@ const Buy_Page = () => {
           padding: "20px",
         }}
       >
-        <div className="container">
+        <div className="buypage-container">
           <h2 className="page-balance">
             Current Page Balance: {balance.toLocaleString()} pages
           </h2>
