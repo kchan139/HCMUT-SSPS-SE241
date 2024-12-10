@@ -14,7 +14,7 @@ import BackgroundSVG from "../../assets/background.svg";
 import "./hist_Admin.css";
 import { IconSearch } from "icons";
 import { Button } from "primitives";
-import { IconChevronDown, IconCopy, IconTrash2, IconEdit2 } from "icons";
+import { IconChevronDown, IconChevronUp, IconCopy, IconTrash2, IconEdit2 } from "icons";
 
 function Admin_history() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -102,6 +102,18 @@ function Admin_history() {
     return paginationItems;
   };
 
+  const [expandedRows, setExpandedRows] = useState([]);
+
+    const toggleRow = (index) => {
+        if (expandedRows.includes(index)) {
+            // If row is already expanded, collapse it
+            setExpandedRows(expandedRows.filter((i) => i !== index));
+        } else {
+            // Expand the row
+            setExpandedRows([...expandedRows, index]);
+        }
+    };
+
   return (
     <div>
       <Navbar property="Admin" />
@@ -175,39 +187,76 @@ function Admin_history() {
                     Hành động
                   </Button>
                 </th>
+                <th>
+                  <Button
+                    variant="neutral"
+                    className="buttonTable"
+                  >
+                    Chi tiết
+                  </Button>
+                </th>
               </tr>
             </thead>
             <tbody>
               {currentRecords.map((record, index) => (
-                <tr key={index}>
-                  <td>{record.MSSV}</td>
-                  <td>{record.printer}</td>
-                  <td>{record.date}</td>
-                  <td>{record.status}</td>
-                  <td>
-                    <Button
-                      variant="neutral"
-                      className="buttonTable"
-                      onPress={() => alert("Copy clicked")}
-                    >
-                      <IconCopy className="icon-black" />
-                    </Button>
-                    <Button
-                      variant="neutral"
-                      className="buttonTable"
-                      onPress={() => alert("Edit clicked")}
-                    >
-                      <IconEdit2 className="icon-black" />
-                    </Button>
-                    <Button
-                      variant="neutral"
-                      className="buttonTable"
-                      onPress={() => alert("Delete clicked")}
-                    >
-                      <IconTrash2 className="icon-black" />
-                    </Button>
-                  </td>
-                </tr>
+                <React.Fragment key={index}>
+                  <tr key={index}>
+                    <td>{record.MSSV}</td>
+                    <td>{record.printer}</td>
+                    <td>{record.date}</td>
+                    <td>{record.status}</td>
+                    <td>
+                      <Button
+                        variant="neutral"
+                        className="buttonTable"
+                        onPress={() => alert("Copy clicked")}
+                      >
+                        <IconCopy className="icon-black" />
+                      </Button>
+                      <Button
+                        variant="neutral"
+                        className="buttonTable"
+                        onPress={() => alert("Edit clicked")}
+                      >
+                        <IconEdit2 className="icon-black" />
+                      </Button>
+                      <Button
+                        variant="neutral"
+                        className="buttonTable"
+                        onPress={() => alert("Delete clicked")}
+                      >
+                        <IconTrash2 className="icon-black" />
+                      </Button>
+                    </td>
+                    <td>
+                        <Button
+                            onPress={() => toggleRow(index)}
+                            variant="neutral"
+                            className="buttonTable_UserLog"
+                        >
+                            {expandedRows.includes(index) ? (
+                                <IconChevronUp />
+                            ) : (
+                                <IconChevronDown />
+                            )}
+                        </Button>
+                    </td>
+                  </tr>
+
+                  {/* Dropdown row */}
+                  {expandedRows.includes(index) && (
+                      <tr className="dropdown-row">
+                          <td colSpan="6">
+                              <div className="dropdown-content">
+                                  <p><strong>File Name:</strong> {record.file_name}</p>
+                                  <p><strong>File Extension:</strong> {record.file_ext}</p>
+                                  <p><strong>File Size:</strong> {record.file_size} bytes</p>
+                                  <p><strong>Page Number:</strong> {record.page_num}</p>
+                              </div>
+                          </td>
+                      </tr>
+                  )}
+                </React.Fragment>
               ))}
             </tbody>
           </table>

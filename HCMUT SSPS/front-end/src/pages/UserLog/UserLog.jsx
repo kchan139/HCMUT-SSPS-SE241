@@ -14,7 +14,7 @@ import {
 } from "primitives";
 import { IconSearch } from "icons";
 import { Button } from "primitives";
-import { IconChevronDown, IconCopy, IconTrash2, IconEdit2 } from "icons";
+import { IconChevronDown, IconChevronUp, IconCopy, IconTrash2, IconEdit2 } from "icons";
 
 function UserLog() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -92,6 +92,18 @@ function UserLog() {
         return paginationItems;
     };
 
+    const [expandedRows, setExpandedRows] = useState([]);
+
+    const toggleRow = (index) => {
+        if (expandedRows.includes(index)) {
+            // If row is already expanded, collapse it
+            setExpandedRows(expandedRows.filter((i) => i !== index));
+        } else {
+            // Expand the row
+            setExpandedRows([...expandedRows, index]);
+        }
+    };
+
     return (
         <div>
             <Navbar property="Registered User" />
@@ -130,16 +142,50 @@ function UserLog() {
                             Trạng thái<IconChevronDown />
                         </Button>
                         </th>
-                        
+                        <th>
+                        <Button variant="neutral" className="buttonTable_UserLog">
+                            Chi tiết
+                        </Button>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     {currentRecords.map((record, index) => (
-                        <tr key={index}>
-                        <td>{record.printer}</td>
-                        <td>{record.date}</td>
-                        <td>{record.status}</td>
-                        </tr>
+                        <React.Fragment key={index}>
+                            {/* Main row */}
+                            <tr>
+                                <td>{record.printer}</td>
+                                <td>{record.date}</td>
+                                <td>{record.status}</td>
+                                <td>
+                                    <Button
+                                        onPress={() => toggleRow(index)}
+                                        variant="neutral"
+                                        className="buttonTable_UserLog"
+                                    >
+                                        {expandedRows.includes(index) ? (
+                                            <IconChevronUp />
+                                        ) : (
+                                            <IconChevronDown />
+                                        )}
+                                    </Button>
+                                </td>
+                            </tr>
+
+                            {/* Dropdown row */}
+                            {expandedRows.includes(index) && (
+                                <tr className="dropdown-row">
+                                    <td colSpan="4">
+                                        <div className="dropdown-content">
+                                            <p><strong>File Name:</strong> {record.file_name}</p>
+                                            <p><strong>File Extension:</strong> {record.file_ext}</p>
+                                            <p><strong>File Size:</strong> {record.file_size} bytes</p>
+                                            <p><strong>Page Number:</strong> {record.page_num}</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
+                        </React.Fragment>
                     ))}
                     </tbody>
                 </table>
