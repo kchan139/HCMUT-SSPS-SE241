@@ -10,7 +10,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .background-image_PrintingComplete {
@@ -33,7 +32,6 @@
 .border_PrintingComplete {
     width: 1000px;
     padding: 50px;
-    height: 50vh;
     justify-content: center;
     align-items: center;
     background: #FFF;
