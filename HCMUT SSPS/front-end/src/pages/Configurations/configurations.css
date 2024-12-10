@@ -1,8 +1,8 @@
 .preview-container {
-    width: 400px;
-    height: 600px; /* You can adjust the height as needed */
+    width: 30%;
+    height: 60%; /* You can adjust the height as needed */
     position: absolute;
-    top: 125px;
+    top: 12%;
     right: 100px;
     overflow: hidden; /* This ensures the image does not overflow out of the container */
     background-color: #333;
