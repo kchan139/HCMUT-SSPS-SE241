@@ -45,6 +45,8 @@
     width: 1000px;
     height: 70vh;
     flex-shrink: 0;
+    position: relative;
+    margin-bottom: 100px;
     background: #FFF;
 }
 

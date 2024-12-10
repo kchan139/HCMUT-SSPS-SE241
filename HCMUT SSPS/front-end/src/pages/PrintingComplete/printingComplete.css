@@ -5,6 +5,7 @@
 }
 
 .background_PrintingComplete {
+    height: 95vh;
     position: relative;
     flex-grow: 1; /* Take up all available space */
     display: flex;
@@ -31,6 +32,7 @@
 
 .border_PrintingComplete {
     width: 1000px;
+    height: 50vh;
     padding: 50px;
     justify-content: center;
     align-items: center;
