@@ -5,7 +5,7 @@
 }
 
 .background_PrintingComplete {
-    height: 95vh;
+    height: 100vh;
     position: relative;
     flex-grow: 1; /* Take up all available space */
     display: flex;
@@ -28,11 +28,12 @@
     justify-content: center;
     padding: 40px 20px;
     z-index: 1; /* Ensure it sits above the background */
+    margin-bottom: 10%;
 }
 
 .border_PrintingComplete {
     width: 1000px;
-    height: 50vh;
+    height: 60vh;
     padding: 50px;
     justify-content: center;
     align-items: center;
