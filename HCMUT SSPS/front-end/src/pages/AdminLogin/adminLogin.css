@@ -16,6 +16,20 @@
     align-items: center;
 }
 
+.change-user-button {
+    font-family: Inter, sans-serif; /* Match your Figma font */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #FFF; /* Adjust per design */
+    background: none; /* Ensures no background is visible */
+    border: none; /* Removes the border */
+    padding: 0; /* Removes extra space caused by padding */
+    cursor: pointer;
+    transition: color 0.2s ease;
+    outline: none; /* Removes focus outline if it appears */
+}
+
 .left-pane_AdminLogin {
     /* display: flex;
     flex-direction: column; */

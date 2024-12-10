@@ -57,7 +57,11 @@ function AdminLogin() {
                     <div className="left-pane_AdminLogin">
                         <form className="login-form_AdminLogin">
                             {/* Caption */}
-
+                            <p className="form-caption_AdminLogin">
+                                <Button variant="subtle" className="change-user-button" onPress={() => navigate("/Login")}>
+                                Bạn là học sinh? <u>Quay lại đăng nhập học sinh để tiếp tục.</u>
+                                </Button>
+                            </p>
                             <div className="form-content_AdminLogin">
                                 {/* Username Field */}
                                 <div className="form-group_AdminLogin">

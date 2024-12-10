@@ -42,6 +42,18 @@ records_2252939 = [
     { "MSSV": "2252939", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "file_ext": "pdf", "file_name": "test8.pdf", "file_size": "307514", "page_num": "4", "status": "Pending" },
 ]
 
+page_numbers = {
+    "2252938": 10,
+    "2252939": 15
+}
+
+@app.route('/api/page_num/<mssv>', methods=['GET'])
+def get_page(mssv):
+    if mssv in page_numbers:
+        return jsonify({"page_num": page_numbers[mssv]})
+    else:
+        abort(404, description="Records not found for the given MSSV")
+
 @app.route('/api/records/<mssv>', methods=['PUT'])
 def update_records(mssv):
     data = request.json
