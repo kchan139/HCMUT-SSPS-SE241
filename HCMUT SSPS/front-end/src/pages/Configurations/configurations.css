@@ -1,6 +1,6 @@
 .preview-container {
-    width: 22vw;
-    height: 50vh; /* You can adjust the height as needed */
+    width: 40%;
+    height: 60%; /* You can adjust the height as needed */
     position: absolute;
     top: 125px;
     right: 100px;
