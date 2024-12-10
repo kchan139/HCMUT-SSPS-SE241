@@ -47,6 +47,16 @@ function Configurations() {
         }
         console.log(print_info.MSSV)
         axios
+            .put(`http://127.0.0.1:5000/api/page_num/${print_info.MSSV}`, {'page_num' : Number(studentPages) - Number(totalPages)})
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error('Error updating page:', error);
+                alert('Failed to add page.');
+            });
+
+        axios
             .put(`http://127.0.0.1:5000/api/records/${print_info.MSSV}`, print_info)
             .then((response) => {
                 console.log(response.data);
