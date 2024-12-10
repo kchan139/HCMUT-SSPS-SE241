@@ -7,7 +7,6 @@ import io
 import shutil
 from PyPDF2 import PdfReader
 from docx import Document
-import pythoncom
 # Define a Blueprint for the page count functionality
 page_count_bp = Blueprint('page_count_bp', __name__)
 
