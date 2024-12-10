@@ -19,6 +19,7 @@ import { IconChevronDown, IconChevronUp, IconCopy, IconTrash2, IconEdit2 } from 
 function UserLog() {
     const [currentPage, setCurrentPage] = useState(1);
     const [records, setRecords] = useState([])
+    const [searchQuery, setSearchQuery] = useState("");
     const print_info = JSON.parse(localStorage.getItem('print_info'))
     useEffect(() => {
         axios
@@ -31,13 +32,20 @@ function UserLog() {
                 setRecords([]); // Clear previous records
             });
       }, []);
+      
     const recordsPerPage = 2;
+    const filteredRecords = records.filter(
+        (record) =>
+          record.printer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          record.date.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          record.status.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const currentRecords = records.slice(indexOfFirstRecord, indexOfLastRecord);
+    const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
 
-    const totalPages = Math.ceil(records.length / recordsPerPage);
+    const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
     const handlePageChange = (page) => { setCurrentPage(page); };
     const generatePagination = () => {
         const paginationItems = [];
@@ -80,6 +88,7 @@ function UserLog() {
         }
 
         // Always include the last page
+        if (totalPages > 1) {
         paginationItems.push(
             <PaginationPage
                 key={totalPages}
@@ -87,7 +96,7 @@ function UserLog() {
                 current={currentPage === totalPages}
                 onPress={() => handlePageChange(totalPages)}
             >{totalPages}</PaginationPage>
-        );
+        )};
 
         return paginationItems;
     };
@@ -103,6 +112,11 @@ function UserLog() {
             setExpandedRows([...expandedRows, index]);
         }
     };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
 
     return (
         <div>
@@ -122,7 +136,7 @@ function UserLog() {
                 <div className="container_UserLog">
                 <div className="input-wrapper_UserLog">
                     <IconSearch className="icon-search_UserLog icon-black" />
-                    <input className="searchBar_UserLog" placeholder="Search..." />
+                    <input className="searchBar_UserLog" placeholder="Search..." value={searchQuery} onChange={handleSearchChange} style={{color:"black"}}/>
                 </div>
                 <table className="custom-table">
                     <thead>
