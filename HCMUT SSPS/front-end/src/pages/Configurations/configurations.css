@@ -1,5 +1,5 @@
 .preview-container {
-    width: 30vw;
+    width: 22vw;
     height: 50vh; /* You can adjust the height as needed */
     position: absolute;
     top: 125px;
@@ -89,7 +89,7 @@
 
 .button-group-configurations {
     position: absolute;
-    bottom: 80px;
+    bottom: 50px;
 }
 
 .button-variant-subtle {
