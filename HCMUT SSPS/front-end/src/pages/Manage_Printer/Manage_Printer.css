@@ -11,14 +11,13 @@ pointer-events: none; /* Make the icon unclickable */
 font-size: 1.2rem; /* Optional size */
 }
 
-.container {
+.manageprinter-container {
     width: 80%;
     height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .ext-container {

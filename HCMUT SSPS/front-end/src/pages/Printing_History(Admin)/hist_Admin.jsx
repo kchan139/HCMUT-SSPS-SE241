@@ -130,7 +130,7 @@ function Admin_history() {
           alignItems: "center",
         }}
       >
-        <div className="container">
+        <div className="adminhistory-container">
           <div className="input-wrapper">
             <input className="searchBar" placeholder="Search..." />
             <IconSearch className="icon-search icon-black" />
