@@ -116,3 +116,21 @@
 .custom-table tbody {
     background: white;
 }
+
+.dropdown-row {
+    background-color: #f9f9f9;
+}
+
+.dropdown-content {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+}
+
+.dropdown-content p {
+    flex: 1 1 45%; 
+    margin: 0; 
+}
