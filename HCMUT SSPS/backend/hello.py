@@ -8,7 +8,7 @@ import shutil
 from page_count import page_count_bp
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:8000"}})
 app.register_blueprint(page_count_bp)
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
