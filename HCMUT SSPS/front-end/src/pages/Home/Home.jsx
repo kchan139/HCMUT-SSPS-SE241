@@ -47,7 +47,7 @@ function Home() {
         const selectedFile = event.target.files[0]; // Get the first file selected
         const fileExtension = selectedFile?.name.split(".").pop()?.toLowerCase();
         // Validate if the file extension is allowed
-        if (selectedFile && allowedExtensions.some(ext => ext.Extension === fileExtension && ext.Status === "Allow")) {
+        if (selectedFile && allowedExtensions.some(ext => ext.Extension === fileExtension && ext.Status === "Hỗ trợ")) {
             let print_info = JSON.parse(localStorage.getItem('print_info'));
             const fileInfo = {
                 file_name: selectedFile?.name,
