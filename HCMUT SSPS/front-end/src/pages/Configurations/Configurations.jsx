@@ -46,6 +46,7 @@ function Configurations() {
             return;
         }
         console.log(print_info.MSSV)
+        print_info.page_num = totalPages;
         axios
             .put(`http://127.0.0.1:5000/api/page_num/${print_info.MSSV}`, {'page_num' : Number(studentPages) - Number(totalPages)})
             .then((response) => {

@@ -265,7 +265,7 @@ function Admin_history() {
                                   <p><strong>Tên file:</strong> {record.file_name}</p>
                                   <p><strong>Phần mở rộng file:</strong> {record.file_ext}</p>
                                   <p><strong>Kích thước file:</strong> {(record.file_size / (1024 * 1024)).toFixed(2)} MB</p>
-                                  <p><strong>Số trang:</strong> {record.page_num}</p>
+                                  <p><strong>Số trang in:</strong> {record.page_num}</p>
                               </div>
                           </td>
                       </tr>
