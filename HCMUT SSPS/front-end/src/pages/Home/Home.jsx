@@ -25,7 +25,7 @@ function Home() {
 
                 // Generate the accept attribute based on allowed extensions
                 const extensions = response.data.allowed_extensions
-                    .filter(ext => ext.Status === "Allow")
+                    .filter(ext => ext.Status === "Hỗ trợ")
                     .map(ext => `${ext.Extension}`)
                     .join(", ");
                 setAcceptExtensions(extensions); // Set the dynamic accept value
