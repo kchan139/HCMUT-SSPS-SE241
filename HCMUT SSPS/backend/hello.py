@@ -16,30 +16,30 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Example data structure
 printers = [
-    {"id": 1, "name": "A4 - 402: Printer 1", "status": "Available"},
-    {"id": 2, "name": "A4 - 402: Printer 2", "status": "Unavailable"},
-    {"id": 3, "name": "A4 - 402: Printer 3", "status": "Available"},
-    {"id": 4, "name": "A4 - 402: Printer 4", "status": "Available"},
+    {"id": 1, "name": "A4 - 402: Printer 1", "status": "Khả dụng"},
+    {"id": 2, "name": "A4 - 402: Printer 2", "status": "Không khả dụng"},
+    {"id": 3, "name": "A4 - 402: Printer 3", "status": "Khả dụng"},
+    {"id": 4, "name": "A4 - 402: Printer 4", "status": "Khả dụng"},
 ]
 
 allowed_extensions = [
-    {"Extension": "pdf", "Status": "Allow"},
-    {"Extension": "docx", "Status": "Allow"},
-    {"Extension": "pptx", "Status": "Allow"},
+    {"Extension": "pdf", "Status": "Cho phép"},
+    {"Extension": "docx", "Status": "Cho phép"},
+    {"Extension": "pptx", "Status": "Cho phép"},
 ] 
 
 records_2252938 = [
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "file_ext": "pdf", "file_name": "test1.pdf", "file_size": "123534", "page_num": "10", "status": "Completed" },
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "file_ext": "pdf", "file_name": "test2.pdf", "file_size": "234875", "page_num": "9", "status": "Pending" },
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "file_ext": "pdf", "file_name": "test3.pdf", "file_size": "1938759", "page_num": "5", "status": "Completed" },
-    { "MSSV": "2252938", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "file_ext": "pdf", "file_name": "test4.pdf", "file_size": "48759", "page_num": "2", "status": "Pending" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "file_ext": "pdf", "file_name": "test1.pdf", "file_size": "123534", "page_num": "10", "status": "Đã in" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "file_ext": "pdf", "file_name": "test2.pdf", "file_size": "234875", "page_num": "9", "status": "Đang chờ" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "file_ext": "pdf", "file_name": "test3.pdf", "file_size": "1938759", "page_num": "5", "status": "Đã in" },
+    { "MSSV": "2252938", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "file_ext": "pdf", "file_name": "test4.pdf", "file_size": "48759", "page_num": "2", "status": "Đang chờ" },
 ]
 
 records_2252939 = [
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "file_ext": "pdf", "file_name": "test5.pdf", "file_size": "102745", "page_num": "15", "status": "Completed" },
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "file_ext": "pdf", "file_name": "test6.pdf", "file_size": "947599", "page_num": "18", "status": "Pending" },
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "file_ext": "pdf", "file_name": "test7.pdf", "file_size": "12993", "page_num": "35", "status": "Completed" },
-    { "MSSV": "2252939", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "file_ext": "pdf", "file_name": "test8.pdf", "file_size": "307514", "page_num": "4", "status": "Pending" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 1", "date": "2024-11-20", "file_ext": "pdf", "file_name": "test5.pdf", "file_size": "102745", "page_num": "15", "status": "Đã in" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 2", "date": "2024-11-19", "file_ext": "pdf", "file_name": "test6.pdf", "file_size": "947599", "page_num": "18", "status": "Đang chờ" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 3", "date": "2024-11-18", "file_ext": "pdf", "file_name": "test7.pdf", "file_size": "12993", "page_num": "35", "status": "Đã in" },
+    { "MSSV": "2252939", "printer": "A4 - 402: Printer 4", "date": "2024-11-17", "file_ext": "pdf", "file_name": "test8.pdf", "file_size": "307514", "page_num": "4", "status": "Đang chờ" },
 ]
 
 page_numbers = {
@@ -52,7 +52,7 @@ def get_page(mssv):
     if mssv in page_numbers:
         return jsonify({"page_num": page_numbers[mssv]})
     else:
-        abort(404, description="Records not found for the given MSSV")
+        abort(404, description="Không tìm thấy hồ sơ cho MSSV đã cho")
 
 @app.route('/api/records/<mssv>', methods=['PUT'])
 def update_records(mssv):
@@ -60,21 +60,21 @@ def update_records(mssv):
     print(mssv)
 
     if not data or not isinstance(data, dict):
-        abort(400, description="Invalid data. Please provide a valid JSON object.")
+        abort(400, description="Dữ liệu không hợp lệ. Vui lòng cung cấp một đối tượng JSON hợp lệ.")
 
     # Ensure MSSV matches in the provided record
     if data.get('MSSV') != mssv:
-        abort(400, description="MSSV in the record does not match the provided MSSV.")
+        abort(400, description="MSSV trong hồ sơ không khớp với MSSV đã cung cấp.")
 
     # Add the record to the appropriate list
     if mssv == "2252938":
         records_2252938.append(data)
-        return jsonify({"message": "Record added successfully", "records": records_2252938})
+        return jsonify({"message": "Hồ sơ đã được thêm thành công", "records": records_2252938})
     elif mssv == "2252939":
         records_2252939.append(data)
-        return jsonify({"message": "Record added successfully", "records": records_2252939})
+        return jsonify({"message": "Hồ sơ đã được thêm thành công", "records": records_2252939})
     else:
-        abort(404, description="Records not found for the given MSSV.")
+        abort(404, description="Không tìm thấy hồ sơ cho MSSV đã cho.")
 
 @app.route('/api/records/<mssv>', methods=['GET'])
 def get_records(mssv):
@@ -88,7 +88,7 @@ def get_records(mssv):
         merged_records = records_2252938 + records_2252939
         return jsonify(merged_records)
     else:
-        abort(404, description="Records not found for the given MSSV")
+        abort(404, description="Không tìm thấy hồ sơ cho MSSV đã cho.")
 @app.route('/api/get-file', methods=['GET'])
 def get_file():
     try:
@@ -96,7 +96,7 @@ def get_file():
         files = sorted(os.listdir(UPLOAD_FOLDER))
         
         if not files:
-            abort(404, "No files found in the uploads folder.")
+            abort(404, "Không tìm thấy file trong thư mục uploads.")
         
         # Select the first file
         first_file_path = os.path.join(UPLOAD_FOLDER, files[0])
@@ -120,7 +120,7 @@ def get_file():
         
 
         else:
-            abort(415, "Unsupported file type for preview.")
+            abort(415, "Không hỗ trợ file type cho preview.")
     
     except Exception as e:
         abort(500, f"Error fetching file: {str(e)}")
@@ -128,20 +128,20 @@ def get_file():
 def upload_file():
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     if 'file' not in request.files:
-        return jsonify({"error": "No file part in the request"}), 400
+        return jsonify({"error": "Không có file trong request"}), 400
 
     file = request.files['file']
 
     if file.filename == '':
-        return jsonify({"error": "No selected file"}), 400
+        return jsonify({"error": "Không có file được chọn"}), 400
 
     if file:
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filepath)  # Save file to upload folder
 
-        return jsonify({"message": "File uploaded successfully", "filename": file.filename}), 200
+        return jsonify({"message": "File đã được tải lên thành công", "filename": file.filename}), 200
     else:
-        return jsonify({"error": "File type not allowed"}), 400
+        return jsonify({"error": "File type không được hỗ trợ"}), 400
 
 @app.route('/api/delete-uploads', methods=['DELETE'])
 def delete_uploads():
@@ -150,9 +150,9 @@ def delete_uploads():
         if os.path.exists(UPLOAD_FOLDER):
             # Remove the directory and all its contents
             shutil.rmtree(UPLOAD_FOLDER)
-            return jsonify({"message": "Uploads directory deleted successfully"}), 200
+            return jsonify({"message": "Thư mục uploads đã được xóa thành công"}), 200
         else:
-            return jsonify({"error": "Uploads directory not found"}), 200
+            return jsonify({"error": "Thư mục uploads không được tìm thấy"}), 200
     
     # except Exception as e:
     #     abort(500, f"Error deleting uploads directory: {str(e)}")

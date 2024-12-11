@@ -80,7 +80,7 @@ export function PaginationPage({
       href={href}
       aria-label={`Page ${children}`}
       aria-current={current ? "page" : undefined}
-      variant={current ? "primary" : "subtle"}
+      variant={current ? "neutral" : "subtle"}
       className={clsx()}
       onPress={onPress}
     >
