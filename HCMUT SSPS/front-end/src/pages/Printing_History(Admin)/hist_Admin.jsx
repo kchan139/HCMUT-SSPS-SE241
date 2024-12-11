@@ -19,6 +19,7 @@ import { IconChevronDown, IconChevronUp, IconCopy, IconTrash2, IconEdit2 } from 
 function Admin_history() {
   const [currentPage, setCurrentPage] = useState(1);
   const [records, setRecords] = useState([])
+  const [searchQuery, setSearchQuery] = useState("");
   const print_info = JSON.parse(localStorage.getItem('print_info'))
   useEffect(() => {
       axios
@@ -32,12 +33,19 @@ function Admin_history() {
           });
     }, []);
   const recordsPerPage = 4;
+  const filteredRecords = records.filter(
+    (record) =>
+      record.printer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      record.date.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      record.status.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      record.MSSV.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = records.slice(indexOfFirstRecord, indexOfLastRecord);
+  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
 
-  const totalPages = Math.ceil(records.length / recordsPerPage);
+  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -88,6 +96,7 @@ function Admin_history() {
     }
 
     // Always include the last page
+    if (totalPages > 1) {
     paginationItems.push(
       <PaginationPage
         key={totalPages}
@@ -97,22 +106,27 @@ function Admin_history() {
       >
         {totalPages}
       </PaginationPage>
-    );
+    )};
 
     return paginationItems;
   };
 
   const [expandedRows, setExpandedRows] = useState([]);
 
-    const toggleRow = (index) => {
-        if (expandedRows.includes(index)) {
-            // If row is already expanded, collapse it
-            setExpandedRows(expandedRows.filter((i) => i !== index));
-        } else {
-            // Expand the row
-            setExpandedRows([...expandedRows, index]);
-        }
-    };
+  const toggleRow = (index) => {
+      if (expandedRows.includes(index)) {
+          // If row is already expanded, collapse it
+          setExpandedRows(expandedRows.filter((i) => i !== index));
+      } else {
+          // Expand the row
+          setExpandedRows([...expandedRows, index]);
+      }
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
 
   return (
     <div>
@@ -132,7 +146,7 @@ function Admin_history() {
       >
         <div className="adminhistory-container">
           <div className="input-wrapper">
-            <input className="searchBar" placeholder="Search..." />
+            <input className="searchBar_UserLog" placeholder="Tìm kiếm..." value={searchQuery} onChange={handleSearchChange} style={{color:"black"}}/>
             <IconSearch className="icon-search icon-black" />
           </div>
           <table className="custom-table">
@@ -248,10 +262,10 @@ function Admin_history() {
                       <tr className="dropdown-row">
                           <td colSpan="6">
                               <div className="dropdown-content">
-                                  <p><strong>File Name:</strong> {record.file_name}</p>
-                                  <p><strong>File Extension:</strong> {record.file_ext}</p>
-                                  <p><strong>File Size:</strong> {record.file_size} bytes</p>
-                                  <p><strong>Page Number:</strong> {record.page_num}</p>
+                                  <p><strong>Tên file:</strong> {record.file_name}</p>
+                                  <p><strong>Phần mở rộng file:</strong> {record.file_ext}</p>
+                                  <p><strong>Kích thước file:</strong> {(record.file_size / (1024 * 1024)).toFixed(2)} MB</p>
+                                  <p><strong>Số trang:</strong> {record.page_num}</p>
                               </div>
                           </td>
                       </tr>
@@ -266,14 +280,14 @@ function Admin_history() {
                 href="#"
                 onPress={() => handlePageChange(Math.max(1, currentPage - 1))}
               >
-                Previous
+                Trước
               </PaginationPrevious>
               {generatePagination()}
               <PaginationNext
                 href="#"
                 onPress={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
               >
-                Next
+                Tiếp theo
               </PaginationNext>
             </PaginationList>
           </Pagination>

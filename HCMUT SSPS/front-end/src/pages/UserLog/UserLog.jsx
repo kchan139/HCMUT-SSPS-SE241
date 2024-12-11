@@ -19,6 +19,7 @@ import { IconChevronDown, IconChevronUp, IconCopy, IconTrash2, IconEdit2 } from 
 function UserLog() {
     const [currentPage, setCurrentPage] = useState(1);
     const [records, setRecords] = useState([])
+    const [searchQuery, setSearchQuery] = useState("");
     const print_info = JSON.parse(localStorage.getItem('print_info'))
     useEffect(() => {
         axios
@@ -31,13 +32,20 @@ function UserLog() {
                 setRecords([]); // Clear previous records
             });
       }, []);
+      
     const recordsPerPage = 2;
+    const filteredRecords = records.filter(
+        (record) =>
+          record.printer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          record.date.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          record.status.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const currentRecords = records.slice(indexOfFirstRecord, indexOfLastRecord);
+    const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
 
-    const totalPages = Math.ceil(records.length / recordsPerPage);
+    const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
     const handlePageChange = (page) => { setCurrentPage(page); };
     const generatePagination = () => {
         const paginationItems = [];
@@ -80,6 +88,7 @@ function UserLog() {
         }
 
         // Always include the last page
+        if (totalPages > 1) {
         paginationItems.push(
             <PaginationPage
                 key={totalPages}
@@ -87,7 +96,7 @@ function UserLog() {
                 current={currentPage === totalPages}
                 onPress={() => handlePageChange(totalPages)}
             >{totalPages}</PaginationPage>
-        );
+        )};
 
         return paginationItems;
     };
@@ -103,6 +112,11 @@ function UserLog() {
             setExpandedRows([...expandedRows, index]);
         }
     };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
 
     return (
         <div>
@@ -122,7 +136,7 @@ function UserLog() {
                 <div className="container_UserLog">
                 <div className="input-wrapper_UserLog">
                     <IconSearch className="icon-search_UserLog icon-black" />
-                    <input className="searchBar_UserLog" placeholder="Search..." />
+                    <input className="searchBar_UserLog" placeholder="Tìm kiếm..." value={searchQuery} onChange={handleSearchChange} style={{color:"black"}}/>
                 </div>
                 <table className="custom-table">
                     <thead>
@@ -177,10 +191,10 @@ function UserLog() {
                                 <tr className="dropdown-row">
                                     <td colSpan="4">
                                         <div className="dropdown-content">
-                                            <p><strong>File Name:</strong> {record.file_name}</p>
-                                            <p><strong>File Extension:</strong> {record.file_ext}</p>
-                                            <p><strong>File Size:</strong> {record.file_size} bytes</p>
-                                            <p><strong>Page Number:</strong> {record.page_num}</p>
+                                            <p><strong>Tên file:</strong> {record.file_name}</p>
+                                            <p><strong>Phần mở rộng file:</strong> {record.file_ext}</p>
+                                            <p><strong>Kích thước file:</strong> {(record.file_size / (1024 * 1024)).toFixed(2)} MB</p>
+                                            <p><strong>Số trang:</strong> {record.page_num}</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -192,11 +206,11 @@ function UserLog() {
                 <Pagination style={{ justifyContent: "center" }}>
                     <PaginationList>
                     <PaginationPrevious href="#" onPress={() => handlePageChange(Math.max(1, currentPage - 1))}>
-                        Previous
+                        Trước
                     </PaginationPrevious>
                     {generatePagination()}
                     <PaginationNext href="#" onPress={() => handlePageChange(Math.min(totalPages, currentPage + 1))}>
-                        Next
+                        Tiếp theo
                     </PaginationNext>
                     </PaginationList>
                 </Pagination>

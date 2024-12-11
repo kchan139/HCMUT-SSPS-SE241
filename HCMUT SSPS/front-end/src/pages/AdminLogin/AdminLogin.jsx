@@ -33,7 +33,7 @@ function AdminLogin() {
             MSSV: "",
             printer: "",
             date: formattedDate,
-            status: "Pending"
+            status: "Đang chờ"
         };
 
         if (username === '7777' && password === '123') {

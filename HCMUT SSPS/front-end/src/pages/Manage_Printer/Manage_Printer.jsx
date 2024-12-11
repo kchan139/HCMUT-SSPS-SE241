@@ -124,7 +124,7 @@ const Manage_Printer = () => {
         <div className="add-printer-section">
           <input
             type="text"
-            placeholder="Enter printer information"
+            placeholder="Nhập thông tin máy in..."
             value={newPrinter}
             onChange={(e) => setNewPrinter(e.target.value)}
             className="add-printer-input"

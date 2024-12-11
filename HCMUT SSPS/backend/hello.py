@@ -54,6 +54,23 @@ def get_page(mssv):
     else:
         abort(404, description="Không tìm thấy hồ sơ cho MSSV đã cho")
 
+@app.route('/api/page_num/<mssv>', methods=['PUT'])
+def update_page(mssv):
+    if mssv in page_numbers:
+        data = request.get_json() 
+        
+        page_num = data.get('page_num') 
+        
+        try:
+            page_num = int(page_num) 
+        except (ValueError, TypeError):
+            return jsonify({"error": "Invalid input: 'page_num' must be an integer"}), 400
+
+        page_numbers[mssv] = page_num
+        return jsonify({"message": "Page number updated successfully", "page_num": page_numbers[mssv]}), 200
+    else:
+        abort(404, description="Records not found for the given MSSV")
+
 @app.route('/api/records/<mssv>', methods=['PUT'])
 def update_records(mssv):
     data = request.json

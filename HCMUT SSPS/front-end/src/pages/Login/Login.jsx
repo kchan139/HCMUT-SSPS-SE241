@@ -33,7 +33,7 @@ function Home() {
             MSSV: "",
             printer: "",
             date: formattedDate,
-            status: "Pending"
+            status: "Đang chờ"
         };
 
         if (username === '2252938' && password === '123') {

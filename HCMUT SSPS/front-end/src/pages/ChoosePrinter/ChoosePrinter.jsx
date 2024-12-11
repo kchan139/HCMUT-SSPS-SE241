@@ -26,7 +26,7 @@ function ChoosePrinter(){
 
     const setPrinter = () => {
         if (!selectedPrinter) {
-            alert("Please select a printer")
+            alert("Máy in không được để trống")
             return;
         }
         const print_info = JSON.parse(localStorage.getItem('print_info'))
