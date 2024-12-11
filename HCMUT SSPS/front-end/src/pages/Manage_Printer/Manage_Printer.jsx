@@ -59,7 +59,7 @@ const Manage_Printer = () => {
   }, [selectedExtensions]); // Trigger this effect when selectedExtensions changes
   
   const togglePrinterStatus = (id, currentStatus) => {
-    const updatedStatus = currentStatus === "Available" ? "Unavailable" : "Available";
+    const updatedStatus = currentStatus === "Khả dụng" ? "Không khả dụng" : "Khả dụng";
 
     axios
       .put(`http://127.0.0.1:5000/api/printers/${id}`, { status: updatedStatus })
@@ -77,7 +77,7 @@ const Manage_Printer = () => {
 
   const addPrinter = () => {
     if (newPrinter.trim()) {
-      const newPrinterData = { name: newPrinter, status: "Available" };
+      const newPrinterData = { name: newPrinter, status: "Khả dụng" };
       axios
         .post("http://127.0.0.1:5000/api/printers", newPrinterData)
         .then((response) => {
@@ -100,6 +100,7 @@ const Manage_Printer = () => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           width: "100%",
+          height: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -113,7 +114,7 @@ const Manage_Printer = () => {
             color: "#fff",
             marginBottom: "30px",
             marginTop: "50px",
-            fontSize: "50px",
+            fontSize: "36px",
           }}
         >
           Quản lý máy in
@@ -129,11 +130,11 @@ const Manage_Printer = () => {
             className="add-printer-input"
           />
           <button onClick={addPrinter} className="add-printer-button">
-            Add Printer
+            Thêm máy in
           </button>
         </div>
 
-        <div className="container">
+        <div className="manageprinter-container">
           {printers.map((printer) => (
             <div className="printer-card" key={printer.id}>
               <div className="printer-info">
@@ -144,21 +145,21 @@ const Manage_Printer = () => {
               </div>
               <input
                 type="checkbox"
-                checked={printer.status === "Available"}
+                checked={printer.status === "Khả dụng"}
                 onChange={() => togglePrinterStatus(printer.id, printer.status)}
               />
             </div>
           ))}
         </div>
         <div className="ext-container">
-          <h2>Select Allowed File Extensions:</h2>
+          <h2>Các loại file được hỗ trợ:</h2>
           {selectedExtensions.map((extension) => (
             <div className="printer-card-sm" key={extension.Extension}>
                 <input
                   type="checkbox"
                   value={extension.Extension}
-                  checked={extension.Status === "Allow"}
-                  onChange={(e) => saveExtensions(extension.Extension, e.target.checked ? "Allow" : "Not Allow")}
+                  checked={extension.Status === "Hỗ trợ"}
+                  onChange={(e) => saveExtensions(extension.Extension, e.target.checked ? "Hỗ trợ" : "Không hỗ trợ")}
                 />
                 {extension.Extension}
             </div>

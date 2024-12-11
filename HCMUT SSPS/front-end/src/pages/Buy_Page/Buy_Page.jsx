@@ -73,11 +73,11 @@ const Buy_Page = () => {
       >
         <div className="buypage-container">
           <h2 className="page-balance">
-            Current Page Balance: {balance.toLocaleString()} pages
+            Số trang dư hiện tại: {balance.toLocaleString()} trang
           </h2>
           <div className="buy-form">
             <label htmlFor="pagesToBuy" className="form-label">
-              Enter pages to buy:
+              Nhập số trang cần mua:
             </label>
             <input
                 type="number"
@@ -91,7 +91,7 @@ const Buy_Page = () => {
                 }}
             />
             <label htmlFor="paymentMethod" className="form-label">
-              Select payment method:
+              Chọn phương thức thanh toán:
             </label>
             <select
               id="paymentMethod"
@@ -104,10 +104,10 @@ const Buy_Page = () => {
               <option value="BkPay">BkPay</option>
             </select>
             <p className="total-price">
-              Total Price: {totalPrice.toLocaleString()} VNĐ
+              Tổng số tiền: {totalPrice.toLocaleString()} VNĐ
             </p>
             <button className="buy-button" onClick={handleBuyPages}>
-              Buy Pages
+              Mua trang
             </button>
           </div>
         </div>

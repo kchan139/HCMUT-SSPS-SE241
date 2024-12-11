@@ -144,7 +144,7 @@ function Admin_history() {
           alignItems: "center",
         }}
       >
-        <div className="container">
+        <div className="adminhistory-container">
           <div className="input-wrapper">
             <input className="searchBar_UserLog" placeholder="Search..." value={searchQuery} onChange={handleSearchChange} style={{color:"black"}}/>
             <IconSearch className="icon-search icon-black" />

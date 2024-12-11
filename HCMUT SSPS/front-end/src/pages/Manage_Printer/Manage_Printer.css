@@ -11,14 +11,13 @@ pointer-events: none; /* Make the icon unclickable */
 font-size: 1.2rem; /* Optional size */
 }
 
-.container {
+.manageprinter-container {
     width: 80%;
     height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .ext-container {
@@ -132,7 +131,7 @@ font-size: 1.2rem; /* Optional size */
   
   .add-printer-button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #222;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -141,7 +140,7 @@ font-size: 1.2rem; /* Optional size */
   }
   
   .add-printer-button:hover {
-    background-color: #0056b3;
+    background-color: #555;
   }
   
   
