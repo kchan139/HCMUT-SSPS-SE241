@@ -23,9 +23,9 @@ printers = [
 ]
 
 allowed_extensions = [
-    {"Extension": "pdf", "Status": "Cho phép"},
-    {"Extension": "docx", "Status": "Cho phép"},
-    {"Extension": "pptx", "Status": "Cho phép"},
+    {"Extension": "pdf", "Status": "Hỗ trợ"},
+    {"Extension": "docx", "Status": "Hỗ trợ"},
+    {"Extension": "pptx", "Status": "Hỗ trợ"},
 ] 
 
 records_2252938 = [
@@ -174,7 +174,7 @@ def update_allowed_extensions():
 
 @app.route('/api/printers', methods=['GET'])
 def get_printers():
-    available_printers = [printer for printer in printers if printer['status'] == 'Available']
+    available_printers = [printer for printer in printers if printer['status'] == 'Khả dụng']
     
     return jsonify(available_printers)
 
