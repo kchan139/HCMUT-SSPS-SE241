@@ -42,7 +42,7 @@ function Configurations() {
 
     const addRecord = () => {
         if (Number(studentPages) < Number(totalPages)) {
-            alert("You don't have enough page balance. Please buy some pages");
+            alert("Số trang của tài khoản không đủ. Hãy mua thêm trang in");
             return;
         }
         console.log(print_info.MSSV)
@@ -60,12 +60,12 @@ function Configurations() {
             .put(`http://127.0.0.1:5000/api/records/${print_info.MSSV}`, print_info)
             .then((response) => {
                 console.log(response.data);
-                alert('Record added successfully!');
+                alert('Thêm tác vụ in thành công');
                 navigate("/PrintingComplete")
             })
             .catch((error) => {
                 console.error('Error adding record:', error);
-                alert('Failed to add record.');
+                alert('Thêm tác vụ in thất bại');
             });
     };
 

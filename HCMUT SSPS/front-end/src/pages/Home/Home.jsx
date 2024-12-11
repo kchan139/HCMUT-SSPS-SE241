@@ -80,7 +80,7 @@ function Home() {
                 }); 
             // navigate("/ChoosePrinter");
         } else {
-            alert("Please select a valid file with one of the allowed extensions.");
+            alert("Hãy chọn file với dạng tệp hợp lệ");
             // Reset the input field by clearing the file input
             event.target.value = "";
             // Optionally, reset the file state to null (or set it to an empty string)
@@ -97,7 +97,7 @@ function Home() {
     const handleUpload = () => {
         if (!file) {
             console.log("No file selected.");
-            alert("Please select a file first.");
+            alert("Cần chọn 1 file để tiếp tục");
             return;
         }
     
@@ -122,15 +122,15 @@ function Home() {
                         })
                         .then((uploadResponse) => {
                             if (uploadResponse.status === 200) {
-                                alert("File uploaded successfully!");
+                                alert("Thêm file thành công!");
                                 navigate("/ChoosePrinter");
                             } else {
-                                alert("File upload failed.");
+                                alert("Thêm file thất bại");
                             }
                         })
                         .catch((uploadError) => {
                             console.error("Error uploading file:", uploadError);
-                            alert("Error uploading file.");
+                            alert("Xảy ra lỗi trong quá trình thêm file");
                         });
                 } else {
                     alert("Failed to delete uploads directory.");

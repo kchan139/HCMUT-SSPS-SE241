@@ -29,7 +29,7 @@ const Buy_Page = () => {
   const handleBuyPages = () => {
     if (pagesToBuy > 0) {
       const confirmPurchase = window.confirm(
-        `You are about to buy ${pagesToBuy} page(s) for ${totalPrice.toLocaleString()} VNĐ using ${paymentMethod}. Do you want to proceed?`
+        `Bạn chuẩn bị mua ${pagesToBuy} trang với giá ${totalPrice.toLocaleString()} VNĐ với phương thức thanh toán ${paymentMethod}. Xác nhận thanh toán ?`
       );
   
       if (confirmPurchase) {
@@ -44,12 +44,12 @@ const Buy_Page = () => {
                 alert('Failed to add page.');
             });
         alert(
-          `You successfully bought ${pagesToBuy} page(s) for ${totalPrice.toLocaleString()} VNĐ using ${paymentMethod}.`
+          `Thành công mua ${pagesToBuy} trang với giá ${totalPrice.toLocaleString()} VNĐ bằng ${paymentMethod}.`
         );
         setPagesToBuy(0); // Reset input field
       }
     } else {
-      alert("Please enter a valid number of pages to buy.");
+      alert("Vui lòng nhập số trang mua hợp lệ.");
     }
   };
   

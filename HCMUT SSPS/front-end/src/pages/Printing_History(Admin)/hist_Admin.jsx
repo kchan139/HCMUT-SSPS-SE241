@@ -146,7 +146,7 @@ function Admin_history() {
       >
         <div className="adminhistory-container">
           <div className="input-wrapper">
-            <input className="searchBar_UserLog" placeholder="Search..." value={searchQuery} onChange={handleSearchChange} style={{color:"black"}}/>
+            <input className="searchBar_UserLog" placeholder="Tìm kiếm..." value={searchQuery} onChange={handleSearchChange} style={{color:"black"}}/>
             <IconSearch className="icon-search icon-black" />
           </div>
           <table className="custom-table">
@@ -262,10 +262,10 @@ function Admin_history() {
                       <tr className="dropdown-row">
                           <td colSpan="6">
                               <div className="dropdown-content">
-                                  <p><strong>File Name:</strong> {record.file_name}</p>
-                                  <p><strong>File Extension:</strong> {record.file_ext}</p>
-                                  <p><strong>File Size:</strong> {record.file_size} bytes</p>
-                                  <p><strong>Page Number:</strong> {record.page_num}</p>
+                                  <p><strong>Tên file:</strong> {record.file_name}</p>
+                                  <p><strong>Phần mở rộng file:</strong> {record.file_ext}</p>
+                                  <p><strong>Kích thước file:</strong> {(record.file_size / (1024 * 1024)).toFixed(2)} MB</p>
+                                  <p><strong>Số trang:</strong> {record.page_num}</p>
                               </div>
                           </td>
                       </tr>
@@ -280,14 +280,14 @@ function Admin_history() {
                 href="#"
                 onPress={() => handlePageChange(Math.max(1, currentPage - 1))}
               >
-                Previous
+                Trước
               </PaginationPrevious>
               {generatePagination()}
               <PaginationNext
                 href="#"
                 onPress={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
               >
-                Next
+                Tiếp theo
               </PaginationNext>
             </PaginationList>
           </Pagination>
